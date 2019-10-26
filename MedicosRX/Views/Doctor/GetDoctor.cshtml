@@ -1,0 +1,104 @@
+﻿@model IEnumerable<MedicosRX.Models.sp_get_Doctors_Result>
+
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Doctors List</div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li>
+                        <i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li>
+                        <a class="parent-item" href="#">Doctors</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="active">Doctors List</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tabbable-line">
+                    <div class="tab-content">
+                        <div class="tab-pane active fontawesome-demo" id="tab1">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card card-topline-red">
+                                        <div class="card-head">
+                                            <header></header>
+                                            <div class="tools">
+                                                <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                                                <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                                                @*<a class="t-close btn-color fa fa-times" href="javascript:;"></a>*@
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="btn-group">
+                                                        <a href="~/Doctor/CreateDoctor" id="addRow" class="btn btn-info">
+                                                            Add New <i class="fa fa-plus"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="table-scrollable" style="margin-left:40px;">
+                                                <table class="table table-hover table-checkable order-column full-width" id="example4" style="width:90%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th width="150px;">Dr Name </th>
+                                                            <th> EmailId </th>
+                                                            <th> Gender </th>
+                                                            <th> Qualification </th>
+                                                            <th> Mobile </th>
+                                                            <th> Specialist </th>
+                                                            <th> Timing </th>
+                                                            <th> Action </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (MedicosRX.Models.sp_get_Doctors_Result item in Model)
+                                                        {
+
+
+                                                            <tr>
+
+                                                                <td><a href="~/Doctor/GetDoctorbyId/?DoctorId=@item.DoctorId">@Html.DisplayFor(model => item.Name)</a></td>
+                                                                <td>@Html.DisplayFor(model => item.EmailId)</td>
+                                                                <td>@Html.DisplayFor(model => item.Gender)</td>
+                                                                <td>@Html.DisplayFor(model => item.Qualification)</td>
+                                                                <td>@Html.DisplayFor(model => item.Mobile)</td>
+                                                                <td>@Html.DisplayFor(model => item.Specialist)</td>
+                                                                <td>@Html.DisplayFor(model => item.Timing)</td>
+
+                                                                <td>
+                                                                    <a href="~/Doctor/EditDoctor/@item.DoctorId" class="btn btn-primary btn-xs">
+                                                                        <i class="fa fa-pencil"></i>
+                                                                    </a>
+                                                                    <a href="~/Doctor/DeleteDoctorbyId?DoctorId=@item.DoctorId" class="btn btn-danger btn-xs">
+                                                                        <i class="fa fa-trash-o "></i>
+                                                                    </a>
+                                                                    @*@Html.ActionLink("< i class=fa fa-pencil></i>", "EditDoctor", new { id = item.DoctorId }, new { @class="btn btn - primary btn - xs" })
+                                                                    @Html.ActionLink("Delete", "DeleteDoctor", new { id = item.DoctorId }, new { @class = "btn btn-primary" })*@
+
+
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

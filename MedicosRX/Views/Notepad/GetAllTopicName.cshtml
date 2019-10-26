@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MedicosRX.Models.Notepad>
+
+@{
+    ViewBag.Title = "GetAllTopicName";
+}
+
+<h2>GetAllTopicName</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Index")
+</p>
+<table class="table" style="margin-left:50px;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TopicName)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TopicName)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TopicId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TopicId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TopicId })
+        </td>
+    </tr>
+}
+
+</table>

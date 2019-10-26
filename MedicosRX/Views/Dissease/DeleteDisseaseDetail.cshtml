@@ -1,0 +1,82 @@
+﻿@model MedicosRX.Models.Diseass
+
+@{
+    ViewBag.Title = "DeleteDisseaseDetail";
+}
+
+<h2>DeleteDisseaseDetail</h2>
+
+
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class="pull-left">
+                    <div class="page-title">Delete Dissease</div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li>
+                        <i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li>
+                        <a class="parent-item" href="#">Dissease</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="active">Delete Dissease</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8" style="margin-left: 95px;">
+
+                <div class="card" style="margin-left:122px;">
+                    <div class="card-head card-topline-aqua">
+                        <center> <header>Delete Dissease</header></center>
+                    </div>
+                    <div class="card-body no-padding height-5">
+
+                        <ul class="list-group list-group-unbordered">
+                            <li class="list-group-item">
+                                <b>@Html.DisplayNameFor(model => model.DisseaseName) </b>
+                                <div class="profile-desc-item pull-right">@Html.DisplayFor(model => model.DisseaseName)</div>
+                            </li>
+                            <li class="list-group-item">
+                                <b>@Html.DisplayNameFor(model => model.Description) </b>
+                                <div class="profile-desc-item pull-right">@Html.DisplayFor(model => model.Description)</div>
+                            </li>
+                           
+                        </ul>
+                        <div style="text-align:center;">
+
+
+                            @using (Html.BeginForm())
+                            {
+
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Delete" class="btn btn-success" />
+
+                                </div>
+                            }
+                        </div>
+                        <div style="text-align:left;">
+                            <p>
+                                @* @Html.ActionLink("Edit", "EditDoctor", new { id = Model.DoctorId }) |*@
+                                @Html.ActionLink("Back to List", "GetDisseaseDetails")
+
+
+                            </p>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>

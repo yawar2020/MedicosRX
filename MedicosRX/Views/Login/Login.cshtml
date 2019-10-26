@@ -1,0 +1,88 @@
+﻿@model MedicosRX.Models.RegisterdUser
+@{
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from radixtouch.in/templates/admin/redstar/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Oct 2018 10:25:49 GMT -->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="description" content="Responsive Admin Template" />
+    <meta name="author" content="RedstarHospital" />
+    <title>MedicoRx Hospital</title>
+    <!-- google font -->
+    
+    <link href="~/Content/css.css" rel="stylesheet" />
+    <link href="~/Content/Material-Design-Iconic-Font (1).woff2" rel="stylesheet" />
+    @* <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all" rel="stylesheet" type="text/css" />*@
+    <!-- icons -->
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/assets/iconic/css/material-design-iconic-font.min.css">
+    <!-- bootstrap -->
+    <link href="~/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- style -->
+    <link rel="stylesheet" href="~/css/extra_pages.css">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="~/img/favicon.ico" />
+</head>
+<body>
+    <div class="limiter">
+        <div class="container-login100 page-background">
+            <div class="wrap-login100">
+
+                @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "login100-form validate-form" }))
+                {
+                    <span class="login100-form-logo">
+                        <img alt="" src="~/img/hospital.png">
+                    </span>
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Log in
+                    </span>
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        @Html.TextBoxFor(Model => Model.UserName, null, new { @placeholder = "Username", @class = "input100" })
+
+                        
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        @Html.PasswordFor(Model => Model.Password, new { @placeholder = "password", @class = "input100" })
+                         
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="UserType">
+                        
+                        @Html.DropDownListFor(Model => Model.RoleId, (IEnumerable<SelectListItem>)ViewBag.RoleType, new { @placeholder = "Role", @class = "input100d" })
+
+
+                        @*<input class="input100" type="pas" name="pass" placeholder="Select User Type">*@
+                        
+                    </div>
+                    <div class="container-login100-form-btn">
+                        @*<button class="login100-form-btn">
+                                Login
+                            </button>*@
+                        <input type="submit" value="Submit" class="login100-form-btn" />
+                        <h3 class="warning"> @ViewBag.Message</h3>
+                    </div>
+                    <div class="text-center p-t-30">
+                        <a class="txt1" href="forgot_password.html">
+                            Forgot Password?
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <!-- start js include path -->
+    <script src="~/assets/jquery.min.js"></script>
+    <!-- bootstrap -->
+    <script src="~/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/login.js"></script>
+    <!-- end js include path -->
+</body>
+
+<!-- Mirrored from radixtouch.in/templates/admin/redstar/source/light/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Oct 2018 10:25:51 GMT -->
+</html>

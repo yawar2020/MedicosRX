@@ -1,0 +1,98 @@
+﻿@model IEnumerable<MedicosRX.Models.PatientDetail>
+
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Book Appointment List</div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li>
+                        <i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li>
+                        <a class="parent-item" href="#">Book Appointment</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="active">Book Appointment</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tabbable-line">
+                    <div class="tab-content">
+                        <div class="tab-pane active fontawesome-demo" id="tab1">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card card-topline-red">
+                                        <div class="card-head">
+                                            <header></header>
+                                            <div class="tools">
+                                                <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                                                <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                                                @*<a class="t-close btn-color fa fa-times" href="javascript:;"></a>*@
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="btn-group">
+                                                        <a href="~/Patient/CreatePatient" id="addRow" class="btn btn-info">
+                                                            Add New <i class="fa fa-plus"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="demo-container table-scrollable" style="margin-left:40px;">
+                                                <table class="table table-hover table-checkable order-column full-width" id="example4" style="width:90%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th width="150px;"> Patient Name </th>
+                                                            <th> Gender </th>
+                                                            <th> Refer By </th>
+                                                            <th> Age </th>
+                                                            
+                                                            <th> MobileNo </th>
+                                                            <th> Action </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (MedicosRX.Models.PatientDetail item in Model)
+                                                        {
+
+
+                                                            <tr>
+
+                                                                <td><a href="~/Views/Dissease/GetDisseaseDetails.cshtml">@Html.DisplayFor(model => item.PName)</a></td>
+                                                                @*<td>@Html.DisplayFor(model => item.PatientTypeName)</td>*@
+                                                                <td>@Html.DisplayFor(model => item.Gender)</td>
+                                                                <td>@Html.DisplayFor(model => item.ReferBy)</td>
+                                                                <td>@Html.DisplayFor(model => item.Age)</td>
+                                                               
+                                                                <td>@Html.DisplayFor(model => item.MobileNo)</td>
+                                                                @*<td>@Html.DisplayFor(model => item.Timing)</td>*@
+
+                                                                <td>
+                                                                    @Html.ActionLink("Edit", "EditPatient", new { id = item.Pid }, new { @class = "btn btn-success" })
+                                                                    @Html.ActionLink("Delete", "DeletePatient", new { id = item.Pid }, new { @class = "btn btn-primary" })
+
+
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

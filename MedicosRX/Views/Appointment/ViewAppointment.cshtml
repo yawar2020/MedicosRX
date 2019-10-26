@@ -1,0 +1,91 @@
+﻿@model IEnumerable<MedicosRX.Models.AppointmentDetail>
+
+@{
+    ViewBag.Title = "View All Appointments";
+}
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class="pull-left">
+                    <div class="page-title">Appointments List</div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li>
+                        <i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li>
+                        <a class="parent-item" href="#">Appointments</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="active">View All Appointments</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tabbable-line">
+                    <div class="tab-content">
+                        <div class="tab-pane active fontawesome-demo" id="tab1">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card card-topline-red">
+                                        <div class="card-head">
+                                            <header></header>
+                                            <div class="tools">
+                                                <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                                                <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                                                @*<a class="t-close btn-color fa fa-times" href="javascript:;"></a>*@
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                                    <div class="btn-group">
+                                                        <a href="~/Appointment/CreateAppointment" id="addRow" class="btn btn-info">
+                                                            Add Old Patient Appointment <i class="fa fa-plus"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="table-scrollable" style="margin-left:40px;">
+                                                <table class="table table-hover table-checkable order-column full-width" id="example4" style="width:90%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th> Appointment Id </th>
+                                                            <th> Patient Name </th>
+                                                            <th> DR Name </th>
+                                                            <th> Appointment Date </th>
+                                                            <th> Time </th>
+                                                            <th> Action </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (MedicosRX.Models.AppointmentDetail item in Model)
+                                                        {
+                                                            <tr>
+                                                                <td><a href="~/Dissease/GetDisseaseDetails">@Html.DisplayFor(model => item.AppointmentId)</a></td>
+                                                                <td>@Html.DisplayFor(model => item.PName)</td>
+                                                                <td>@Html.DisplayFor(model => item.DName)</td>
+                                                                <td>@Html.DisplayFor(model => item.DateOfAppointment)</td>
+                                                                <td>@Html.DisplayFor(model => item.TimeOfAppointment)</td>
+                                                                <td><a href="~/Doctor/PatientReport?id=@item.PId">View</a></td>
+                                                               
+                                                            </tr>
+
+
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

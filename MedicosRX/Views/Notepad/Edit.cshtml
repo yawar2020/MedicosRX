@@ -1,0 +1,81 @@
+﻿@model MedicosRX.Models.Notepad
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+
+        <div class="container" style="padding-left:30px;">
+            <div class="row" style="padding-top: 44px">
+                <div class="col-md-2">
+                    @Html.HiddenFor(m=>m.TopicId)
+                    @Html.LabelFor(m => m.TopicName)
+                </div>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(m => m.TopicName, new { @class = "form-control" })
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+            <div class="row" style="padding-bottom: 12px">
+                <div class="col-md-2">
+                    @Html.LabelFor(m => m.TopicContent)
+
+                </div>
+                <div class="col-md-8">
+                    @Html.TextAreaFor(m => m.TopicContent, 20, 20, new { @class = "form-control" })
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div><div class="row" style="padding-bottom: 12px">
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-6">
+                    <input type="submit" class="btn btn-success" value="Save" />
+                    @* <input type="button" class="btn btn-primary" value="Send Mail" />*@
+
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+        </div>
+
+        @*<span>@Html.Raw(Model.PersonalDetails)</span>*@
+    }
+
+    <script src="http://localhost/MedicosRX/js/tinymce.min.js"></script> 
+    <script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea', width: 725,
+            plugins: [
+       "advlist autolink lists link image charmap print preview anchor",
+       "searchreplace visualblocks code fullscreen",
+       "insertdatetime media table contextmenu paste"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+
+        });
+    </script>
+</body>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a708f951d3284177a7bd5eb508b1c71b" Name="Diagram1">
+        <EntityTypeShape EntityType="HospitalManagementModel.Appointment" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Contact" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.DiognasisTest" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Diseass" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Doctor" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.InvestigationDetail" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Medicine" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Notepad" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Patient" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.PatientType" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.RegisterdUser" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Role" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Account" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="HospitalManagementModel.GeneralPrescriptiom" Width="1.5" PointX="9.75" PointY="6.75" />
+        <EntityTypeShape EntityType="HospitalManagementModel.SettingInfo" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="HospitalManagementModel.sysdiagram" Width="1.5" PointX="11.75" PointY="3.75" />
+        <EntityTypeShape EntityType="HospitalManagementModel.TabletAndDos" Width="1.5" PointX="11.75" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

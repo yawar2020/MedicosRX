@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="../Content/jquery-ui.css" rel="stylesheet" />
+    <script src="../Scripts/external/jquery/jquery.js"></script>
+    <script src="../Scripts/jquery-ui.js"></script>
+</head>
+<body>
+  
+    <script>
+    var availableTags = [
+    "ActionScript",
+    "AppleScript",
+    "Asp",
+    "BASIC",
+    "C",
+    "C++",
+    "Clojure",
+    "COBOL",
+    "ColdFusion",
+    "Erlang",
+    "Fortran",
+    "Groovy",
+    "Haskell",
+    "Java",
+    "JavaScript",
+    "Lisp",
+    "Perl",
+    "PHP",
+    "Python",
+    "Ruby",
+    "Scala",
+    "Scheme"
+    ];
+    $( "#autocomplete" ).autocomplete({
+    source: availableTags
+    });
+    </script>
+    <!--<script>
+    $( "#autocomplete" ).autocomplete({
+  source: '@Url.Action("GetMedicine")'
+    });</script>-->
+
+    <div>
+        <input id="autocomplete" title="type &quot;a&quot;">
+    </div>
+</body>
+</html>

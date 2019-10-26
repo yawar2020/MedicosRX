@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MedicosRX.Models.Contact>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <h3>Contact Details</h3>
+</div>
+<div class="tab-pane" id="tab2">
+   
+
+    <div class="row">
+@foreach (var item in Model)
+{
+        <div class="col-md-4">
+            <div class="card card-topline-aqua">
+                <div class="card-body no-padding ">
+                    <div class="doctor-profile">
+                        <img src="~/images/Address_Book-512.png" class="doctor-pic" alt="">
+                        <div style="text-align:right;">
+                            <a href="~/Contacts/Edit/@item.ContactId"><span>Edit</span></a>
+                            <a href="~/Contacts/Delete/@item.ContactId"> <span>Delete</span></a>
+                        </div>
+                        <div class="profile-usertitle">
+                            <div class="doctor-name">@item.ContactName </div>
+                            <div class="name-center"> @item.Designation </div>
+                        </div>
+                        <p>@item.Address</p>
+                        <p>@item.EmailId</p>
+                        <p></p>
+                        <div><p><i class="fa fa-phone"></i><a href="tel:@item.PhoneNo2">@item.PhoneNo2</a></p> </div>
+                        <div class="profile-userbuttons">
+                            <a href="~/Contacts/Details/@item.ContactId" class="btn btn-circle deepPink-bgcolor btn-sm">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         
+}
+    </div>
+ 
+
+</div>

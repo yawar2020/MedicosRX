@@ -1,0 +1,106 @@
+﻿@model MedicosRX.Models.Doctor
+
+@{
+    ViewBag.Title = "DeleteDoctorbyId";
+}
+
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class="pull-left">
+                    <div class="page-title">Delete Doctor</div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li>
+                        <i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li>
+                        <a class="parent-item" href="#">Doctor</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="active">Delete Doctor</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8" style="margin-left: 95px;">
+
+                <div class="card" style="margin-left:122px;">
+                    <div class="card-head card-topline-aqua">
+                        <center> <header>Delete Doctor</header></center>
+                    </div>
+                    <div class="card-body no-padding height-5">
+
+                        <ul class="list-group list-group-unbordered">
+                            <li class="list-group-item">
+                                <b>@Html.DisplayNameFor(model => model.Name) </b>
+                                <div class="profile-desc-item pull-right">@Html.DisplayFor(model => model.Name)</div>
+                            </li>
+                            <li class="list-group-item">
+                                <b>@Html.DisplayNameFor(model => model.EmailId) </b>
+                                <div class="profile-desc-item pull-right">@Html.DisplayFor(model => model.EmailId)</div>
+                            </li>
+                            <li class="list-group-item">
+                                <b>@Html.DisplayNameFor(model => model.Gender)</b>
+                                <div class="profile-desc-item pull-right">@Html.DisplayNameFor(model => model.Gender)</div>
+                            </li>
+                            <li class="list-group-item">
+                                <b>@Html.DisplayNameFor(model => model.Mobile) </b>
+                                <div class="profile-desc-item pull-right">@Html.DisplayFor(model => model.Mobile)</div>
+                            </li>
+                            <li class="list-group-item">
+                                <b>
+                                    @Html.DisplayNameFor(model => model.Date_of_joining)
+                                </b>
+                                <div class="profile-desc-item pull-right">
+                                    @Html.DisplayFor(model => model.Date_of_joining)
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <b>
+                                    @Html.DisplayNameFor(model => model.Timing)
+                                </b>
+                                <div class="profile-desc-item pull-right">
+                                    @Html.DisplayFor(model => model.Timing)
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <b>@Html.DisplayNameFor(model => model.Address)</b>
+                                <div class="profile-desc-item pull-right">@Html.DisplayFor(model => model.Address)</div>
+                            </li>
+                        </ul>
+                        <div style="text-align:center;">
+
+
+                            @using (Html.BeginForm())
+                            {
+
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Delete" class="btn btn-success" />
+
+                                </div>
+                            }
+                        </div>
+                        <div style="text-align:left;">
+                            <p>
+                               @* @Html.ActionLink("Edit", "EditDoctor", new { id = Model.DoctorId }) |*@
+                                @Html.ActionLink("Back to List", "GetDoctor")
+
+
+                            </p>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,1225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HospitalManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="BillId" />
+          </Key>
+          <Property Name="BillId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DrId" Type="int" />
+          <Property Name="PatId" Type="int" />
+          <Property Name="TotalAmount" Type="float" />
+          <Property Name="DR_Percentage" Type="int" />
+          <Property Name="Referal_Percentage" Type="int" />
+          <Property Name="NetAmount" Type="float" />
+          <Property Name="Createdby" Type="int" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="Createddate" Type="datetime" />
+          <Property Name="Updateddate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="AppointmentId" />
+          </Key>
+          <Property Name="AppointmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PId" Type="int" />
+          <Property Name="Did" Type="int" />
+          <Property Name="DateOfAppointment" Type="datetime" />
+          <Property Name="TimeOfAppointment" Type="nvarchar(max)" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactName" Type="nvarchar(max)" />
+          <Property Name="Designation" Type="nvarchar(max)" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNo1" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNo2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DiognasisTest">
+          <Key>
+            <PropertyRef Name="TestId" />
+          </Key>
+          <Property Name="TestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TestName" Type="varchar(max)" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="IsChecked" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Diseasses">
+          <Key>
+            <PropertyRef Name="DiseasesId" />
+          </Key>
+          <Property Name="DiseasesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DisseaseName" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Doctors">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+          </Key>
+          <Property Name="DoctorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Specialist" Type="nvarchar" MaxLength="50" />
+          <Property Name="Photo" Type="nvarchar(max)" />
+          <Property Name="Date_of_joining" Type="datetime" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Timing" Type="nvarchar(max)" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GeneralPrescriptiom">
+          <Key>
+            <PropertyRef Name="Rpid" />
+          </Key>
+          <Property Name="Rpid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pid" Type="int" />
+          <Property Name="Did" Type="int" />
+          <Property Name="PTName" Type="nvarchar(max)" />
+          <Property Name="Gender" Type="nvarchar(max)" />
+          <Property Name="Age" Type="nvarchar(max)" />
+          <Property Name="Ht" Type="nvarchar(max)" />
+          <Property Name="WT" Type="nvarchar(max)" />
+          <Property Name="ReferBy" Type="nvarchar(max)" />
+          <Property Name="Complain" Type="nvarchar(max)" />
+          <Property Name="History" Type="nvarchar(max)" />
+          <Property Name="Dx" Type="nvarchar(max)" />
+          <Property Name="Investigation" Type="nvarchar(max)" />
+          <Property Name="Advice" Type="nvarchar(max)" />
+          <Property Name="GC" Type="nvarchar" MaxLength="50" />
+          <Property Name="Temp" Type="nvarchar" MaxLength="50" />
+          <Property Name="PR" Type="nvarchar" MaxLength="50" />
+          <Property Name="LR" Type="nvarchar" MaxLength="50" />
+          <Property Name="BP" Type="nvarchar" MaxLength="50" />
+          <Property Name="SPO2" Type="nvarchar" MaxLength="50" />
+          <Property Name="PA" Type="nvarchar" MaxLength="50" />
+          <Property Name="CNS" Type="nvarchar" MaxLength="50" />
+          <Property Name="GRBS" Type="nvarchar" MaxLength="50" />
+          <Property Name="Review" Type="nvarchar(max)" />
+          <Property Name="Emergency" Type="nvarchar(max)" />
+          <Property Name="HR" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDatetime" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="Updateddatetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="InvestigationDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Invistagation" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Medicine">
+          <Key>
+            <PropertyRef Name="MId" />
+          </Key>
+          <Property Name="MId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedicineName" Type="nvarchar(max)" />
+          <Property Name="Formula" Type="nvarchar(max)" />
+          <Property Name="DisseaseId" Type="int" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="Updationdate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Notepad">
+          <Key>
+            <PropertyRef Name="TopicId" />
+          </Key>
+          <Property Name="TopicId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TopicName" Type="nvarchar(max)" />
+          <Property Name="TopicContent" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="Pid" />
+          </Key>
+          <Property Name="Pid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientType" Type="int" />
+          <Property Name="ReferBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Age" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Date_of_Admission" Type="datetime" />
+          <Property Name="Date_of_DisCharge" Type="datetime" />
+          <Property Name="Createdby" Type="int" />
+          <Property Name="Updatedby" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatetedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PatientTypes">
+          <Key>
+            <PropertyRef Name="PTypeId" />
+          </Key>
+          <Property Name="PTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RegisterdUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserTypeId" Type="int" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Updatedby" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SettingInfo">
+          <Key>
+            <PropertyRef Name="sno" />
+          </Key>
+          <Property Name="sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Logo" Type="nvarchar(max)" />
+          <Property Name="TitleName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HospitalManagement.dbo.TabletAndDoses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TabletAndDoses">
+          <Key>
+            <PropertyRef Name="UpdatedBy" />
+          </Key>
+          <Property Name="Pid" Type="int" />
+          <Property Name="TabName" Type="nvarchar" MaxLength="500" />
+          <Property Name="RpId" Type="int" />
+          <Property Name="Dosses" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDatetime" Type="datetime" />
+          <Property Name="UpdatedDatetime" Type="datetime" />
+        </EntityType>
+        <Function Name="getNotepadbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TopicId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_CreateAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DrId" Type="int" Mode="In" />
+          <Parameter Name="PatId" Type="int" Mode="In" />
+          <Parameter Name="TotalAmount" Type="float" Mode="In" />
+          <Parameter Name="timeAppoint" Type="varchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Delete_Doctor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DoctorId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteDoctorsbyid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_get_CountPatientByDrId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_get_Dashboard_Detail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_get_Dashboard_GetCountAppointmentByDRId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Drid" Type="int" Mode="In" />
+          <Parameter Name="fromdate" Type="nvarchar" Mode="In" />
+          <Parameter Name="todate" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_get_Dissease" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_get_Dissease_ById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_get_Doctors" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_get_Medicine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getDoctorsbyid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_getLoginUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="RoleId" Type="int" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Insert_Dissease" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DisseaseName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Insert_Medicine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MedicineName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Formula" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="DisseaseId" Type="int" Mode="In" />
+          <Parameter Name="Comment" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertDoctors" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="emailid" Type="nvarchar" Mode="In" />
+          <Parameter Name="mobileno" Type="nvarchar" Mode="In" />
+          <Parameter Name="gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="specialist" Type="nvarchar" Mode="In" />
+          <Parameter Name="date_of_joining" Type="datetime" Mode="In" />
+          <Parameter Name="qualification" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Timing" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertPatient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ptname" Type="nvarchar" Mode="In" />
+          <Parameter Name="MobileNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="PatientType" Type="int" Mode="In" />
+          <Parameter Name="Age" Type="varchar" Mode="In" />
+          <Parameter Name="ReferBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="createdBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Update_Dissease_ById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="DisseaseName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Update_Doctors" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="emailid" Type="nvarchar" Mode="In" />
+          <Parameter Name="mobileno" Type="nvarchar" Mode="In" />
+          <Parameter Name="gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="specialist" Type="nvarchar" Mode="In" />
+          <Parameter Name="date_of_joining" Type="datetime" Mode="In" />
+          <Parameter Name="qualification" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Timing" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UpdatedBy" Type="int" Mode="In" />
+          <Parameter Name="DoctorID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateDoctors" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmailId" Type="nvarchar" Mode="In" />
+          <Parameter Name="MobileNo" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="HospitalManagementModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiognasisTest" EntityType="Self.DiognasisTest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diseasses" EntityType="Self.Diseasses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GeneralPrescriptiom" EntityType="Self.GeneralPrescriptiom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvestigationDetails" EntityType="Self.InvestigationDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medicine" EntityType="Self.Medicine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notepad" EntityType="Self.Notepad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PatientTypes" EntityType="Self.PatientTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegisterdUsers" EntityType="Self.RegisterdUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SettingInfo" EntityType="Self.SettingInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TabletAndDoses" EntityType="Self.TabletAndDoses" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TabletAndDoses].[Pid] AS [Pid], 
+    [TabletAndDoses].[TabName] AS [TabName], 
+    [TabletAndDoses].[RpId] AS [RpId], 
+    [TabletAndDoses].[Dosses] AS [Dosses], 
+    [TabletAndDoses].[CreatedBy] AS [CreatedBy], 
+    [TabletAndDoses].[UpdatedBy] AS [UpdatedBy], 
+    [TabletAndDoses].[CreatedDatetime] AS [CreatedDatetime], 
+    [TabletAndDoses].[UpdatedDatetime] AS [UpdatedDatetime]
+    FROM [dbo].[TabletAndDoses] AS [TabletAndDoses]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HospitalManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="AppointmentId" />
+          </Key>
+          <Property Name="AppointmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PId" Type="Int32" />
+          <Property Name="Did" Type="Int32" />
+          <Property Name="DateOfAppointment" Type="DateTime" Precision="3" />
+          <Property Name="TimeOfAppointment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNo1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNo2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DiognasisTest">
+          <Key>
+            <PropertyRef Name="TestId" />
+          </Key>
+          <Property Name="TestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TestName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsChecked" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Diseass">
+          <Key>
+            <PropertyRef Name="DiseasesId" />
+          </Key>
+          <Property Name="DiseasesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisseaseName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+          </Key>
+          <Property Name="DoctorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Specialist" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_of_joining" Type="DateTime" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Timing" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="InvestigationDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Invistagation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Medicine">
+          <Key>
+            <PropertyRef Name="MId" />
+          </Key>
+          <Property Name="MId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicineName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Formula" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DisseaseId" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="Updationdate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Notepad">
+          <Key>
+            <PropertyRef Name="TopicId" />
+          </Key>
+          <Property Name="TopicId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TopicName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TopicContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="Pid" />
+          </Key>
+          <Property Name="Pid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientType" Type="Int32" />
+          <Property Name="ReferBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_of_Admission" Type="DateTime" Precision="3" />
+          <Property Name="Date_of_DisCharge" Type="DateTime" Precision="3" />
+          <Property Name="Createdby" Type="Int32" />
+          <Property Name="Updatedby" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatetedTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PatientType">
+          <Key>
+            <PropertyRef Name="PTypeId" />
+          </Key>
+          <Property Name="PTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RegisterdUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="UserTypeId" Type="Int32" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Updatedby" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="HospitalManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="DiognasisTests" EntityType="Self.DiognasisTest" />
+          <EntitySet Name="Diseasses" EntityType="Self.Diseass" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctor" />
+          <EntitySet Name="InvestigationDetails" EntityType="Self.InvestigationDetail" />
+          <EntitySet Name="Medicines" EntityType="Self.Medicine" />
+          <EntitySet Name="Notepads" EntityType="Self.Notepad" />
+          <EntitySet Name="Patients" EntityType="Self.Patient" />
+          <EntitySet Name="PatientTypes" EntityType="Self.PatientType" />
+          <EntitySet Name="RegisterdUsers" EntityType="Self.RegisterdUser" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <FunctionImport Name="sp_Delete_Doctor">
+          <Parameter Name="DoctorId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DeleteDoctorsbyid">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_get_Dissease" ReturnType="Collection(HospitalManagementModel.sp_get_Dissease_Result)" />
+          <FunctionImport Name="sp_get_Dissease_ById" ReturnType="Collection(HospitalManagementModel.sp_get_Dissease_ById_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_get_Doctors" ReturnType="Collection(HospitalManagementModel.sp_get_Doctors_Result)" />
+          <FunctionImport Name="sp_get_Medicine" ReturnType="Collection(HospitalManagementModel.sp_get_Medicine_Result)" />
+          <FunctionImport Name="sp_getAppointment" ReturnType="Collection(HospitalManagementModel.sp_getAppointment_Result)" />
+          <FunctionImport Name="sp_getDoctorsbyid" ReturnType="Collection(HospitalManagementModel.sp_getDoctorsbyid_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_getLoginUsers" ReturnType="Collection(HospitalManagementModel.sp_getLoginUsers_Result)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="RoleId" Mode="In" Type="Int32" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Insert_Dissease" ReturnType="Collection(Decimal)">
+            <Parameter Name="DisseaseName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Insert_Medicine" ReturnType="Collection(Decimal)">
+            <Parameter Name="MedicineName" Mode="In" Type="String" />
+            <Parameter Name="Formula" Mode="In" Type="String" />
+            <Parameter Name="DisseaseId" Mode="In" Type="Int32" />
+            <Parameter Name="Comment" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertDoctors" ReturnType="Collection(Decimal)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="emailid" Mode="In" Type="String" />
+            <Parameter Name="mobileno" Mode="In" Type="String" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+            <Parameter Name="specialist" Mode="In" Type="String" />
+            <Parameter Name="date_of_joining" Mode="In" Type="DateTime" />
+            <Parameter Name="qualification" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="Timing" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertPatient" ReturnType="Collection(Decimal)">
+            <Parameter Name="Ptname" Mode="In" Type="String" />
+            <Parameter Name="MobileNo" Mode="In" Type="String" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+            <Parameter Name="PatientType" Mode="In" Type="Int32" />
+            <Parameter Name="Age" Mode="In" Type="String" />
+            <Parameter Name="ReferBy" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="createdBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Update_Dissease_ById">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="DisseaseName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Update_Doctors">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="emailid" Mode="In" Type="String" />
+            <Parameter Name="mobileno" Mode="In" Type="String" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+            <Parameter Name="specialist" Mode="In" Type="String" />
+            <Parameter Name="date_of_joining" Mode="In" Type="DateTime" />
+            <Parameter Name="qualification" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="Timing" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UpdatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="DoctorID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateDoctors">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="EmailId" Mode="In" Type="String" />
+            <Parameter Name="MobileNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Accounts" EntityType="HospitalManagementModel.Account" />
+          <EntitySet Name="GeneralPrescriptioms" EntityType="HospitalManagementModel.GeneralPrescriptiom" />
+          <EntitySet Name="SettingInfoes" EntityType="HospitalManagementModel.SettingInfo" />
+          <EntitySet Name="sysdiagrams" EntityType="HospitalManagementModel.sysdiagram" />
+          <EntitySet Name="TabletAndDoses" EntityType="HospitalManagementModel.TabletAndDos" />
+          <FunctionImport Name="getNotepadbyId" ReturnType="Collection(HospitalManagementModel.getNotepadbyId_Result)">
+          <Parameter Name="TopicId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CreateAppointment" ReturnType="Collection(Decimal)">
+            <Parameter Name="DrId" Mode="In" Type="Int32" />
+            <Parameter Name="PatId" Mode="In" Type="Int32" />
+            <Parameter Name="TotalAmount" Mode="In" Type="Double" />
+            <Parameter Name="timeAppoint" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_get_CountPatientByDrId" ReturnType="Collection(HospitalManagementModel.sp_get_CountPatientByDrId_Result)" />
+          <FunctionImport Name="sp_get_Dashboard_Detail" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="sp_get_Dashboard_GetCountAppointmentByDRId" ReturnType="Collection(Int32)">
+            <Parameter Name="Drid" Mode="In" Type="Int32" />
+            <Parameter Name="fromdate" Mode="In" Type="String" />
+            <Parameter Name="todate" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_get_Dissease_Result">
+          <Property Type="Int32" Name="DiseasesId" Nullable="false" />
+          <Property Type="String" Name="DisseaseName" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="UpdatedDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_get_Dissease_ById_Result">
+          <Property Type="Int32" Name="DiseasesId" Nullable="false" />
+          <Property Type="String" Name="DisseaseName" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="UpdatedDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_get_Doctors_Result">
+          <Property Type="Int32" Name="DoctorId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EmailId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Qualification" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Specialist" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Photo" Nullable="true" />
+          <Property Type="DateTime" Name="Date_of_joining" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Timing" Nullable="true" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="UpdationDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_get_Medicine_Result">
+          <Property Type="Int32" Name="MId" Nullable="false" />
+          <Property Type="String" Name="MedicineName" Nullable="true" />
+          <Property Type="String" Name="Formula" Nullable="true" />
+          <Property Type="String" Name="Comment" Nullable="true" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="true" />
+          <Property Type="Int32" Name="DiseasesId" Nullable="true" />
+          <Property Type="String" Name="DisseaseName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_getAppointment_Result">
+          <Property Type="Int32" Name="AppointmentId" Nullable="false" />
+          <Property Type="DateTime" Name="DateOfAppointment" Nullable="true" Precision="23" />
+          <Property Type="String" Name="TimeOfAppointment" Nullable="true" />
+          <Property Type="Int32" Name="Pid" Nullable="false" />
+          <Property Type="String" Name="PName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_getDoctorsbyid_Result">
+          <Property Type="Int32" Name="DoctorId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EmailId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Qualification" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Specialist" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Photo" Nullable="true" />
+          <Property Type="DateTime" Name="Date_of_joining" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Timing" Nullable="true" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="UpdationDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_getLoginUsers_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="RoleId" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="BillId" />
+          </Key>
+          <Property Name="BillId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DrId" Type="Int32" />
+          <Property Name="PatId" Type="Int32" />
+          <Property Name="TotalAmount" Type="Double" />
+          <Property Name="DR_Percentage" Type="Int32" />
+          <Property Name="Referal_Percentage" Type="Int32" />
+          <Property Name="NetAmount" Type="Double" />
+          <Property Name="Createdby" Type="Int32" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="Createddate" Type="DateTime" Precision="3" />
+          <Property Name="Updateddate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="GeneralPrescriptiom">
+          <Key>
+            <PropertyRef Name="Rpid" />
+          </Key>
+          <Property Name="Rpid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pid" Type="Int32" />
+          <Property Name="Did" Type="Int32" />
+          <Property Name="PTName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ht" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReferBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Complain" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="History" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dx" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Investigation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Advice" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Temp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SPO2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CNS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GRBS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Review" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Emergency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDatetime" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="Updateddatetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SettingInfo">
+          <Key>
+            <PropertyRef Name="sno" />
+          </Key>
+          <Property Name="sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TitleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TabletAndDos">
+          <Key>
+            <PropertyRef Name="UpdatedBy" />
+          </Key>
+          <Property Name="Pid" Type="Int32" />
+          <Property Name="TabName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RpId" Type="Int32" />
+          <Property Name="Dosses" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDatetime" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDatetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <ComplexType Name="getNotepadbyId_Result">
+          <Property Type="Int32" Name="TopicId" Nullable="false" />
+          <Property Type="String" Name="TopicName" Nullable="true" />
+          <Property Type="String" Name="TopicContent" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_get_CountPatientByDrId_Result">
+          <Property Type="Int32" Name="Did" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="PatientCount" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HospitalManagementModelStoreContainer" CdmEntityContainer="HospitalManagementEntities">
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointment">
+                <ScalarProperty Name="AppointmentId" ColumnName="AppointmentId" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="Did" ColumnName="Did" />
+                <ScalarProperty Name="DateOfAppointment" ColumnName="DateOfAppointment" />
+                <ScalarProperty Name="TimeOfAppointment" ColumnName="TimeOfAppointment" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdationDate" ColumnName="UpdationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Contact">
+              <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="PhoneNo1" ColumnName="PhoneNo1" />
+                <ScalarProperty Name="PhoneNo2" ColumnName="PhoneNo2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiognasisTests">
+            <EntityTypeMapping TypeName="HospitalManagementModel.DiognasisTest">
+              <MappingFragment StoreEntitySet="DiognasisTest">
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="TestName" ColumnName="TestName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsChecked" ColumnName="IsChecked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diseasses">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Diseass">
+              <MappingFragment StoreEntitySet="Diseasses">
+                <ScalarProperty Name="DiseasesId" ColumnName="DiseasesId" />
+                <ScalarProperty Name="DisseaseName" ColumnName="DisseaseName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Doctor">
+              <MappingFragment StoreEntitySet="Doctors">
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Specialist" ColumnName="Specialist" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Date_of_joining" ColumnName="Date_of_joining" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Timing" ColumnName="Timing" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdationDate" ColumnName="UpdationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvestigationDetails">
+            <EntityTypeMapping TypeName="HospitalManagementModel.InvestigationDetail">
+              <MappingFragment StoreEntitySet="InvestigationDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Invistagation" ColumnName="Invistagation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicines">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Medicine">
+              <MappingFragment StoreEntitySet="Medicine">
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="MedicineName" ColumnName="MedicineName" />
+                <ScalarProperty Name="Formula" ColumnName="Formula" />
+                <ScalarProperty Name="DisseaseId" ColumnName="DisseaseId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Updationdate" ColumnName="Updationdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notepads">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Notepad">
+              <MappingFragment StoreEntitySet="Notepad">
+                <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+                <ScalarProperty Name="TopicName" ColumnName="TopicName" />
+                <ScalarProperty Name="TopicContent" ColumnName="TopicContent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="Pid" ColumnName="Pid" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
+                <ScalarProperty Name="PatientType" ColumnName="PatientType" />
+                <ScalarProperty Name="ReferBy" ColumnName="ReferBy" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Date_of_Admission" ColumnName="Date_of_Admission" />
+                <ScalarProperty Name="Date_of_DisCharge" ColumnName="Date_of_DisCharge" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatetedTime" ColumnName="UpdatetedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatientTypes">
+            <EntityTypeMapping TypeName="HospitalManagementModel.PatientType">
+              <MappingFragment StoreEntitySet="PatientTypes">
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+                <ScalarProperty Name="PatientType1" ColumnName="PatientType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegisterdUsers">
+            <EntityTypeMapping TypeName="HospitalManagementModel.RegisterdUser">
+              <MappingFragment StoreEntitySet="RegisterdUsers">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="Updatedby" ColumnName="Updatedby" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_Delete_Doctor" FunctionName="HospitalManagementModel.Store.sp_Delete_Doctor" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteDoctorsbyid" FunctionName="HospitalManagementModel.Store.sp_DeleteDoctorsbyid" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="HospitalManagementModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_get_Dissease" FunctionName="HospitalManagementModel.Store.sp_get_Dissease">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HospitalManagementModel.sp_get_Dissease_Result">
+                <ScalarProperty Name="DiseasesId" ColumnName="DiseasesId" />
+                <ScalarProperty Name="DisseaseName" ColumnName="DisseaseName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_get_Dissease_ById" FunctionName="HospitalManagementModel.Store.sp_get_Dissease_ById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HospitalManagementModel.sp_get_Dissease_ById_Result">
+                <ScalarProperty Name="DiseasesId" ColumnName="DiseasesId" />
+                <ScalarProperty Name="DisseaseName" ColumnName="DisseaseName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_get_Doctors" FunctionName="HospitalManagementModel.Store.sp_get_Doctors">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HospitalManagementModel.sp_get_Doctors_Result">
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Specialist" ColumnName="Specialist" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Date_of_joining" ColumnName="Date_of_joining" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Timing" ColumnName="Timing" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdationDate" ColumnName="UpdationDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_get_Medicine" FunctionName="HospitalManagementModel.Store.sp_get_Medicine">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HospitalManagementModel.sp_get_Medicine_Result">
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="MedicineName" ColumnName="MedicineName" />
+                <ScalarProperty Name="Formula" ColumnName="Formula" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="DiseasesId" ColumnName="DiseasesId" />
+                <ScalarProperty Name="DisseaseName" ColumnName="DisseaseName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_getAppointment" FunctionName="HospitalManagementModel.Store.sp_getAppointment">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HospitalManagementModel.sp_getAppointment_Result">
+                <ScalarProperty Name="AppointmentId" ColumnName="AppointmentId" />
+                <ScalarProperty Name="DateOfAppointment" ColumnName="DateOfAppointment" />
+                <ScalarProperty Name="TimeOfAppointment" ColumnName="TimeOfAppointment" />
+                <ScalarProperty Name="Pid" ColumnName="Pid" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_getDoctorsbyid" FunctionName="HospitalManagementModel.Store.sp_getDoctorsbyid">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HospitalManagementModel.sp_getDoctorsbyid_Result">
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Specialist" ColumnName="Specialist" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Date_of_joining" ColumnName="Date_of_joining" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Timing" ColumnName="Timing" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdationDate" ColumnName="UpdationDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_getLoginUsers" FunctionName="HospitalManagementModel.Store.sp_getLoginUsers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HospitalManagementModel.sp_getLoginUsers_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Insert_Dissease" FunctionName="HospitalManagementModel.Store.sp_Insert_Dissease" />
+          <FunctionImportMapping FunctionImportName="sp_Insert_Medicine" FunctionName="HospitalManagementModel.Store.sp_Insert_Medicine" />
+          <FunctionImportMapping FunctionImportName="sp_InsertDoctors" FunctionName="HospitalManagementModel.Store.sp_InsertDoctors" />
+          <FunctionImportMapping FunctionImportName="sp_InsertPatient" FunctionName="HospitalManagementModel.Store.sp_InsertPatient" />
+          <FunctionImportMapping FunctionImportName="sp_Update_Dissease_ById" FunctionName="HospitalManagementModel.Store.sp_Update_Dissease_ById" />
+          <FunctionImportMapping FunctionImportName="sp_Update_Doctors" FunctionName="HospitalManagementModel.Store.sp_Update_Doctors" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateDoctors" FunctionName="HospitalManagementModel.Store.sp_UpdateDoctors" />
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="Updateddate" ColumnName="Updateddate" />
+                <ScalarProperty Name="Createddate" ColumnName="Createddate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+                <ScalarProperty Name="Referal_Percentage" ColumnName="Referal_Percentage" />
+                <ScalarProperty Name="DR_Percentage" ColumnName="DR_Percentage" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="PatId" ColumnName="PatId" />
+                <ScalarProperty Name="DrId" ColumnName="DrId" />
+                <ScalarProperty Name="BillId" ColumnName="BillId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneralPrescriptioms">
+            <EntityTypeMapping TypeName="HospitalManagementModel.GeneralPrescriptiom">
+              <MappingFragment StoreEntitySet="GeneralPrescriptiom">
+                <ScalarProperty Name="Updateddatetime" ColumnName="Updateddatetime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="HR" ColumnName="HR" />
+                <ScalarProperty Name="Emergency" ColumnName="Emergency" />
+                <ScalarProperty Name="Review" ColumnName="Review" />
+                <ScalarProperty Name="GRBS" ColumnName="GRBS" />
+                <ScalarProperty Name="CNS" ColumnName="CNS" />
+                <ScalarProperty Name="PA" ColumnName="PA" />
+                <ScalarProperty Name="SPO2" ColumnName="SPO2" />
+                <ScalarProperty Name="BP" ColumnName="BP" />
+                <ScalarProperty Name="LR" ColumnName="LR" />
+                <ScalarProperty Name="PR" ColumnName="PR" />
+                <ScalarProperty Name="Temp" ColumnName="Temp" />
+                <ScalarProperty Name="GC" ColumnName="GC" />
+                <ScalarProperty Name="Advice" ColumnName="Advice" />
+                <ScalarProperty Name="Investigation" ColumnName="Investigation" />
+                <ScalarProperty Name="Dx" ColumnName="Dx" />
+                <ScalarProperty Name="History" ColumnName="History" />
+                <ScalarProperty Name="Complain" ColumnName="Complain" />
+                <ScalarProperty Name="ReferBy" ColumnName="ReferBy" />
+                <ScalarProperty Name="WT" ColumnName="WT" />
+                <ScalarProperty Name="Ht" ColumnName="Ht" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PTName" ColumnName="PTName" />
+                <ScalarProperty Name="Did" ColumnName="Did" />
+                <ScalarProperty Name="Pid" ColumnName="Pid" />
+                <ScalarProperty Name="Rpid" ColumnName="Rpid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SettingInfoes">
+            <EntityTypeMapping TypeName="HospitalManagementModel.SettingInfo">
+              <MappingFragment StoreEntitySet="SettingInfo">
+                <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="sno" ColumnName="sno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HospitalManagementModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TabletAndDoses">
+            <EntityTypeMapping TypeName="HospitalManagementModel.TabletAndDos">
+              <MappingFragment StoreEntitySet="TabletAndDoses">
+                <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+                <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Dosses" ColumnName="Dosses" />
+                <ScalarProperty Name="RpId" ColumnName="RpId" />
+                <ScalarProperty Name="TabName" ColumnName="TabName" />
+                <ScalarProperty Name="Pid" ColumnName="Pid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getNotepadbyId" FunctionName="HospitalManagementModel.Store.getNotepadbyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HospitalManagementModel.getNotepadbyId_Result">
+                <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+                <ScalarProperty Name="TopicName" ColumnName="TopicName" />
+                <ScalarProperty Name="TopicContent" ColumnName="TopicContent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CreateAppointment" FunctionName="HospitalManagementModel.Store.sp_CreateAppointment" />
+          <FunctionImportMapping FunctionImportName="sp_get_CountPatientByDrId" FunctionName="HospitalManagementModel.Store.sp_get_CountPatientByDrId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HospitalManagementModel.sp_get_CountPatientByDrId_Result">
+                <ScalarProperty Name="Did" ColumnName="Did" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PatientCount" ColumnName="PatientCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_get_Dashboard_Detail" FunctionName="HospitalManagementModel.Store.sp_get_Dashboard_Detail" />
+          <FunctionImportMapping FunctionImportName="sp_get_Dashboard_GetCountAppointmentByDRId" FunctionName="HospitalManagementModel.Store.sp_get_Dashboard_GetCountAppointmentByDRId" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

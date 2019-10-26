@@ -1,0 +1,368 @@
+﻿<script src="~/Scripts/jquery-1.11.1.min.js"></script>
+<link href="~/Content/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui.js"></script>
+
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class="center">
+                    <div class="page-title">Welcome To Dashboard</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="card card-box">
+                    <div class="card-head">
+                        <header>Dashboard Information</header>
+
+                    </div>
+                    <div id="bar-parent">
+
+                        @using (Html.BeginForm("GetAppointCount", "DashBoard", FormMethod.Post))
+                        {
+                            <div class="row" style="padding-left:100px;padding-right:10px;display:none;" id="CustomColumn">
+                                <div class="col-md-3" id="FromDatePicId">
+                                    <div class="input-daterange input-group" id="datepicker">
+                                        <div class="input-group date form_date " data-date="" data-date-format="mm-dd-yyyy" data-link-field="dtp_input2" data-link-format="mm-dd-yyyy">
+                                            From: <input class="form-control" size="8" name="fromappDate" placeholder="From" type="text" value="">
+                                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3" id="ToDatePicId">
+                                    <div class="input-daterange input-group" id="datepicker">
+                                        <div class="input-group date form_date " data-date="toappDate" data-date-format="mm-dd-yyyy" data-link-field="dtp_input2" data-link-format="mm-dd-yyyy">
+                                            To:<input class="form-control" size="8" name="toappDate" placeholder="To" type="text" value="">
+                                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+
+                                    <div>
+                                        <input class="form-control autocomtext" size="12" name="DrNameAndSpeciality" placeholder="Enter Dr Name" type="text" value="">
+                                        <input type="hidden" id="hfAppointments" name="hfAppointments" />
+                                        <input type="hidden" id="hfTotalAccounts" name="hfTotalAccounts" />
+                                   
+                                     </div>
+
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <input type="submit" value="Submit" class="btn btn-success" />
+                                        <a class="btn btn-primary" onclick="closeSelectedDate();">Close</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        }
+                        <div class="row" style="padding-top:15px;padding-left:20px;padding-right:20px;">
+                            <div class="col-xl-4 col-md-6 col-12">
+                                <div class="info-box bg-blue">
+                                    <span class="info-box-icon push-bottom"><i class="material-icons">group</i></span>
+                                    <div class="info-box-content">
+                                        <div style="text-align:right;">
+                                            @Html.DropDownList("CustomAppointment", new List<SelectListItem>() {
+                                       new SelectListItem {Text="Current Date",Value="1"},
+                                       new SelectListItem {Text="Custom Date",Value="2"},
+                                   }, new { @onchange = "CallSelectedDate(this,1211);" })
+                                        </div>
+                                        <span class="info-box-text">Current Appointments</span>
+                                        <span class="info-box-number" id="CurrnetAppointment">@ViewBag.CountCurrentAppointment</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 45%">
+
+                                            </div>
+                                        </div>
+                                        <span class="progress-description">
+
+                                        </span>
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-xl-4 col-md-6 col-12">
+                                <div class="info-box bg-orange">
+                                    <span class="info-box-icon push-bottom"><i class="material-icons">person</i></span>
+                                    <div class="info-box-content">
+                                        <div style="text-align:right;">
+                                            @Html.DropDownList("CustomAppointment", new List<SelectListItem>() {
+                                       new SelectListItem {Text="Current Date",Value="1"},
+                                       new SelectListItem {Text="Custom Date",Value="2"},
+                                   }, new { @onchange = "CallSelectedDate(this,1212);" })
+                                        </div>
+                                        <span class="info-box-text">Exisiting Patients</span>
+                                        <span class="info-box-number" id="CountExistingPatient">@Model.CountExistingPatient</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 40%"></div>
+                                        </div>
+
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </div>
+                            <!-- /.col -->
+                            <!-- /.col -->
+                            <div class="col-xl-4 col-md-6 col-12">
+                                <div class="info-box bg-success">
+                                    <span class="info-box-icon push-bottom"><i class="fas fa-rupee-sign">₹</i></span>
+                                    <div class="info-box-content">
+                                        <div style="text-align:right;">
+                                            @Html.DropDownList("CustomAppointment", new List<SelectListItem>() {
+                                       new SelectListItem {Text="Current Date",Value="1"},
+                                       new SelectListItem {Text="Custom Date",Value="2"},
+                                   }, new { @onchange = "CallSelectedDate(this,1213);" })
+                                        </div>
+                                        <span class="info-box-text">Today O.P Collection</span>
+                                        <span class="info-box-number" id="SumEarningPerday">Net Amount:@Model.SumEarningPerday</span><span>₹</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 50%"></div>
+                                        </div>
+
+                                    </div>
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </div>
+
+                            <div class="col-xl-3 col-md-6 col-12">
+
+                                <!-- /.info-box -->
+                            </div>
+                            <!-- /.col -->
+                            <!--
+                            Chart Doctor Appointment
+                            -->
+
+                            <div class="col-md-12 col-sm-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div id="resizable" style="height: 370px;border:1px solid gray;">
+                                            <div id="chartContainer1" style="height: 100%; width: 100%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card  card-box">
+                                            <div class="card-head">
+                                                <header>DOCTORS LIST</header>
+                                                <div class="tools">
+                                                    <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                                                    <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                                                    <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body no-padding height-9">
+                                                <div class="row">
+                                                    <ul class="docListWindow">
+                                                        <li>
+                                                            <div class="prog-avatar">
+                                                                <img src="img/doc/doc1.jpg" alt="" width="40" height="40">
+                                                            </div>
+                                                            <div class="details">
+                                                                <div class="title">
+                                                                    <a href="#">Dr.Rajesh</a> -(MBBS,MD)
+                                                                </div>
+                                                                <div>
+                                                                    <span class="clsAvailable">Available</span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="prog-avatar">
+                                                                <img src="img/doc/doc2.jpg" alt="" width="40" height="40">
+                                                            </div>
+                                                            <div class="details">
+                                                                <div class="title">
+                                                                    <a href="#">Dr.Sarah Smith</a> -(MBBS,MD)
+                                                                </div>
+                                                                <div>
+                                                                    <span class="clsAvailable">Available</span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="prog-avatar">
+                                                                <img src="img/doc/doc3.jpg" alt="" width="40" height="40">
+                                                            </div>
+                                                            <div class="details">
+                                                                <div class="title">
+                                                                    <a href="#">Dr.John Deo</a> - (BDS,MDS)
+                                                                </div>
+                                                                <div>
+                                                                    <span class="clsNotAvailable">Not Available</span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="prog-avatar">
+                                                                <img src="img/doc/doc4.jpg" alt="" width="40" height="40">
+                                                            </div>
+                                                            <div class="details">
+                                                                <div class="title">
+                                                                    <a href="#">Dr.Jay Soni</a> - (BHMS)
+                                                                </div>
+                                                                <div>
+                                                                    <span class="clsOnLeave">On Leave</span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="prog-avatar">
+                                                                <img src="img/doc/doc5.jpg" alt="" width="40" height="40">
+                                                            </div>
+                                                            <div class="details">
+                                                                <div class="title">
+                                                                    <a href="#">Dr.Jacob Ryan</a> - (MBBS,MS)
+                                                                </div>
+                                                                <div>
+                                                                    <span class="clsNotAvailable">Not Available</span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="prog-avatar">
+                                                                <img src="img/doc/doc6.jpg" alt="" width="40" height="40">
+                                                            </div>
+                                                            <div class="details">
+                                                                <div class="title">
+                                                                    <a href="#">Dr.Megha Trivedi</a> - (MBBS,MS)
+                                                                </div>
+                                                                <div>
+                                                                    <span class="clsAvailable">Available</span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="text-center full-width">
+                                                        <a href="#">View all</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    window.onload = function () {
+        var dataPoints = [];
+
+        // Construct options first and then pass it as a parameter
+        var options1 = {
+            animationEnabled: true,
+            title: {
+                text: "Number of Patients Assigned to Doctor Chart"
+            },
+            data: [{
+                type: "column", //change it to line, area, bar, pie, etc
+                legendText: "Try Resizing with the handle to the bottom right",
+                showInLegend: true,
+
+                dataPoints: dataPoints
+            }]
+        };
+
+
+        $.getJSON("GetDoctorAndPatientChart", addData);
+        function addData(data) {
+            for (var i = 0; i < data.length; i++) {
+                dataPoints.push({
+                    label: data[i].DoctorName,
+                    y: data[i].PatientCount
+                });
+            }
+
+            $("#resizable").resizable({
+                create: function (event, ui) {
+                    //Create chart.
+                    $("#chartContainer1").CanvasJSChart(options1);
+                },
+                resize: function (event, ui) {
+                    //Update chart size according to its container size.
+                    $("#chartContainer1").CanvasJSChart().render();
+                }
+            });
+        }
+
+    }
+    function CallSelectedDate(thisVal, sno) {
+        debugger;
+        if (thisVal.options.selectedIndex == 0) {
+            if (sno == 1211 || sno == 1212 || sno == 1213) {
+                $('#CustomColumn').css("display", "none");
+                $.ajax({
+                    url: '@Url.Action("Index1", "DashBoard")',
+                    type: 'GET',
+
+                    success: function (result) {
+                        $('#CurrnetAppointment').text(result.CountCurrentAppointment);
+                        $('#CountExistingPatient').text(result.CountExistingPatient);
+                        $('#SumEarningPerday').text(result.SumEarningPerday);
+                        
+                    }
+                });
+            }
+        }
+        else if (thisVal.options.selectedIndex == 1) {
+            if (sno == 1211) {
+                $('#CustomColumn').css("display", "flex");
+                $('#FromDatePicId').css("display", "none");
+                $('#ToDatePicId').css("display", "none");
+
+
+            }
+            else if (sno == 1212) {
+                $('#CustomColumn').css("display", "flex");
+                $('#FromDatePicId').css("display", "flex");
+                $('#ToDatePicId').css("display", "flex");
+                $('#hfAppointments').val("ExistingPatient");
+               
+            }
+            else if (sno = 1213) {
+                $('#CustomColumn').css("display", "flex");
+                $('#FromDatePicId').css("display", "flex");
+                $('#ToDatePicId').css("display", "flex");
+                $('#hfTotalAccounts').val("CurrentOPEarning");
+
+            }
+
+        }
+        else {
+            $('#CustomColumn').css("display", "none");
+
+        }
+    }
+    function closeSelectedDate(thisVal) {
+        $('#CustomColumn').css("display", "none");
+    }
+
+    $(function () {
+        // alert('help');
+        $(".autocomtext").autocomplete({
+
+            source: '@Url.Action("../Patient/GetDoctorName")'
+
+        });
+
+    })
+</script>

@@ -1,0 +1,1754 @@
+﻿@model MedicosRX.Models.Patient
+
+@{
+Layout = "~/Views/Shared/_Layout.cshtml";
+ //Layout = null;
+}
+<html>
+<head>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @* <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">*@
+    @*<script src="~/Scripts/external/jquery/jquery.js"></script>*@
+    <script src="~/Scripts/jquery-1.11.1.min.js"></script>
+    <link href="~/Content/jqx.base.css" rel="stylesheet" />
+    <link href="~/Content/jqx.summer.css" rel="stylesheet" />
+    <!-- jQuery library
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    -->
+    <!-- Latest compiled JavaScript -->
+    @*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-ui.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/demos.js"></script>
+    <script type="text/javascript" src="~/Scripts/jqxcore.js"></script>
+    <script type="text/javascript" src="~/Scripts/jqxbuttons.js"></script>
+    <script type="text/javascript" src="~/Scripts/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="~/Scripts/jqxtextarea.js"></script>
+
+    <script>
+        $(function () {
+            // alert('help');
+            $(".autocomtext").autocomplete({
+
+                source: '@Url.Action("GetMedicine")'
+
+            });
+
+        })
+
+        $('#ChildrenHeightModal').on('shown.bs.modal', function () {
+            $(this).find('.modal-dialog').css({
+                width: 'auto',
+                height: 'auto',
+                'max-height': '100%'
+            });
+        });
+    </script>
+
+    <style>
+        .autocomtext {
+        }
+
+        .modal .modal-content {
+            border-radius: 2px;
+            border: 0;
+            width: 800px;
+            /*margin-left: 0;*/
+        }
+
+        .col-xs-1 {
+            width: 6.3%;
+        }
+
+        label {
+            padding-left: 14px;
+        }
+
+        table, tr, td {
+            /*border: 1px solid #ddd;*/
+            padding: 8px;
+            color: black;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        .txtCss {
+            background-color: skyblue;
+            width: 20%;
+            height: 50%;
+            padding-left: 5%;
+        }
+
+        .padding-0 {
+            padding-right: 0;
+            padding-left: 10;
+        }
+
+        .dropdown {
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            height: 20px;
+            max-height: 300px;
+            background: #f6f6f6;
+            overflow-y: auto;
+        }
+
+        .element::-webkit-input-placeholder {
+            color: blue;
+            font-weight: bold;
+        }
+
+        .modal-body {
+            width: 100%;
+        }
+
+        @@page {
+            size: A4;
+            margin: 0;
+            margin-left: 0;
+            margin-bottom: 0;
+            margin-top: 0;
+            margin-right: 0;
+        }
+
+        @@media print {
+            html, body {
+                width: 400mm;
+                height: 960mm;
+                margin-left: 0px;
+            }
+
+            span {
+                font-size: 60px;
+                padding-left: 90px;
+                font-weight: 900;
+            }
+
+            .addresslbl {
+                font-size: 30px;
+                padding-left: 230px;
+            }
+
+            .pt {
+                font-size: 22px;
+            }
+
+            .ptlength {
+                width: 100%;
+            }
+
+            .textareasize {
+                border: none;
+                border-color: transparent;
+                font-size: 20px;
+                font-weight: 700;
+            }
+
+            .inputFontsize {
+                font-size: 20px;
+                font-weight: 700;
+                color: transparent;
+                border: none;
+                border-color: transparent;
+            }
+
+            .inputTextboxSizeSno {
+                width: 60px;
+                height: 50px;
+            }
+
+            .inputTextboxSizeMedicineBox {
+                width: 340px;
+                height: 50px;
+            }
+
+            .inputTextboxSizeDoses {
+                width: 145px;
+                height: 50px;
+            }
+
+            #jqxDXTextArea {
+                border: none;
+            }
+
+            #jqxHistoryTextArea {
+                border: none;
+
+            }
+
+            #jqxTextArea {
+                border: none;
+            
+            }
+            .test {
+           
+                font-size: 90px;
+                font-weight: 700;
+                color: transparent;
+                border: none;
+                border-color: transparent
+            }
+
+            .Rfsw {
+                font-weight: 800;
+                font-size: 20px;
+            }
+
+            ::-webkit-input-placeholder { /* WebKit browsers */
+                color: transparent;
+                opacity: 0;
+            }
+
+            :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                color: transparent;
+            }
+
+            ::-moz-placeholder { /* Mozilla Firefox 19+ */
+                color: transparent;
+            }
+
+            :-ms-input-placeholder { /* Internet Explorer 10+ */
+                color: transparent;
+            }
+
+            /*
+              start  code for hiding placeholder hiding on media print
+            */
+
+            ::-webkit-input-placeholder { /* WebKit browsers */
+                color: transparent;
+            }
+
+            :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                color: transparent;
+            }
+
+            ::-moz-placeholder { /* Mozilla Firefox 19+ */
+                color: transparent;
+            }
+
+            :-ms-input-placeholder { /* Internet Explorer 10+ */
+                color: transparent;
+            }
+
+            textarea::-webkit-input-placeholder { /* WebKit browsers */
+                color: transparent;
+            }
+
+            textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                color: transparent;
+            }
+
+            textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+                color: transparent;
+            }
+
+            textarea:-ms-input-placeholder { /* Internet Explorer 10+ */
+                color: transparent;
+            }
+
+            /*End placeholder code*/
+        }
+
+
+        .modal-body {
+            background-image: url("embryo.jpg");
+            background-size: cover;
+        }
+
+        .modal-backdrop {
+            background-image: url('~/images/embryo.jpg');
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('.icon').click(function () {
+                $('.text-here').html('Please enter your username');
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <div class="modal fade" id="ChildrenHeightModal" role="dialog">
+        <div class="modal-dialog" style="margin-left: 240px;margin-top:70px;">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <div>
+                        <span style="text-align:center;font-size:large;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Height and Weight Details</span>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+
+                <div class="modal-body" style="padding-left: 40px;">
+
+                    <div>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <table width="5%" style="text-align:center;border-color: green;border: 1px solid #ddd;">
+                                    <tr style="color:white;background-color:green;">
+                                        <td colspan="6" style="font-family:'Times New Roman', Times, serif;font-size:medium;"><span>Height/Weight Children</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;font-weight:bold;" colspan="3">Boys</td>
+                                        <td style="text-align:center;font-weight:bold;" colspan="2 ">Girls</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold">Weight Kgs</td>
+                                        <td style="font-weight:bold">Height(cm)</td>
+                                        <td style="font-weight:bold">Age(Years)</td>
+                                        <td style="font-weight:bold">Height(cm)</td>
+                                        <td style="font-weight:bold">Weight Kgs</td>
+                                    </tr>
+                                    <tr>
+                                        <td>14.6</td>
+                                        <td>94.9</td>
+                                        <td>3.0</td>
+                                        <td>93.9</td>
+                                        <td>14.1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>16.7</td>
+                                        <td>102.9</td>
+                                        <td>4.0</td>
+                                        <td>101.6</td>
+                                        <td>17.7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>18.7</td>
+                                        <td>109.9</td>
+                                        <td>5.0</td>
+                                        <td>108.4</td>
+                                        <td>18.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>20.7</td>
+                                        <td>116.1</td>
+                                        <td>6.0</td>
+                                        <td>114.6</td>
+                                        <td>19.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>22.9</td>
+                                        <td>121.1</td>
+                                        <td>7.0</td>
+                                        <td>120.6</td>
+                                        <td>21.8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>25.3</td>
+                                        <td>127.0</td>
+                                        <td>8.0</td>
+                                        <td>126.4</td>
+                                        <td>24.8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>28.1</td>
+                                        <td>132.2</td>
+                                        <td>9.0</td>
+                                        <td>132.2</td>
+                                        <td>28.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>31.4</td>
+                                        <td>137.5</td>
+                                        <td>10.0</td>
+                                        <td>138.3</td>
+                                        <td>32.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>32.2</td>
+                                        <td>140</td>
+                                        <td>11+</td>
+                                        <td>142</td>
+                                        <td>33.7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>37.0</td>
+                                        <td>147</td>
+                                        <td>12+</td>
+                                        <td>148</td>
+                                        <td>38.7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>40.9</td>
+                                        <td>153</td>
+                                        <td>13+</td>
+                                        <td>155</td>
+                                        <td>44.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>47.0</td>
+                                        <td>160</td>
+                                        <td>14+</td>
+                                        <td>159</td>
+                                        <td>48.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>52.6</td>
+                                        <td>166</td>
+                                        <td>15+</td>
+                                        <td>161</td>
+                                        <td>51.4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>58.0</td>
+                                        <td>171</td>
+                                        <td>16+</td>
+                                        <td>162</td>
+                                        <td>53.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>62.7</td>
+                                        <td>175</td>
+                                        <td>17+</td>
+                                        <td>163</td>
+                                        <td>54.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>65.0</td>
+                                        <td>177</td>
+                                        <td>18+</td>
+                                        <td>164</td>
+                                        <td>54.4</td>
+                                    </tr>
+
+
+                                </table>
+                            </div>
+                            <div class="col-md-5">
+                                <table width="5%" style="text-align:center;border-color: green;">
+                                    <tr style="background-color:green;color:white;">
+
+                                        <td colspan="6">
+                                            <span style="font-family:'Times New Roman', Times, serif;font-size:medium;"> Height/Weight-Adults</span>
+                                        </td>
+
+
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="font-weight:bold">Height</td>
+                                        <td colspan="2" style="font-weight:bold">Weight in Kgs.</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold">Inches</td>
+                                        <td style="font-weight:bold">Centimeters</td>
+                                        <td style="font-weight:bold">Male</td>
+                                        <td style="font-weight:bold">Female</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4'10"</td>
+                                        <td>147</td>
+                                        <td>-</td>
+                                        <td>47</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4'11"</td>
+                                        <td>149.5</td>
+                                        <td>-</td>
+                                        <td>49</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5'0"</td>
+                                        <td>152</td>
+                                        <td>54</td>
+                                        <td>51</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5'1"</td>
+                                        <td>155</td>
+                                        <td>56</td>
+                                        <td>53</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5'2"</td>
+                                        <td>157.5</td>
+                                        <td>58</td>
+                                        <td>54</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5'3"</td>
+                                        <td>160</td>
+                                        <td>59</td>
+                                        <td>56</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5'4"</td>
+                                        <td>162.5</td>
+                                        <td>60</td>
+                                        <td>58</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5'5"</td>
+                                        <td>165</td>
+                                        <td>62</td>
+                                        <td>60</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>5'6"</td>
+                                        <td>167.5</td>
+                                        <td>64</td>
+                                        <td>62</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>5'7"</td>
+                                        <td>170</td>
+                                        <td>66</td>
+                                        <td>64</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>5'8"</td>
+                                        <td>172.5</td>
+                                        <td>68</td>
+                                        <td>66</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>5'9"</td>
+                                        <td>175</td>
+                                        <td>69</td>
+                                        <td>68</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>5'10"</td>
+                                        <td>177.5</td>
+                                        <td>72</td>
+                                        <td>70</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>5'11"</td>
+                                        <td>180</td>
+                                        <td>74</td>
+                                        <td>72</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>6'0"</td>
+                                        <td>182.5</td>
+                                        <td>76</td>
+                                        <td>74</td>
+                                    </tr>
+
+
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @*<div class="modal fade" id="DiagnosisTestModal" role="dialog">
+            <div class="modal-dialog" style="margin-left: 240px;margin-top:70px;">
+
+                 Modal content
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <div>
+                            <span style="text-align:center;font-size:large;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Test Names</span>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                    </div>
+
+                    <div class="modal-body" style="padding-left: 40px;">
+
+                        <div>
+                            <div class="row">
+                                @using (Ajax.BeginForm("PatientReport", "Doctor", new AjaxOptions
+                                {
+                                    OnSuccess = "OnSuccess",
+                                    OnFailure = "OnFailure",
+                                    LoadingElementId = "progress"
+                                }))
+                                {
+                                    <div class="col-md-7">
+                                        <table class="table table-responsive" width="10%" style="text-align:center;border-color: green;border: 1px solid #ddd;">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Test Name</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+
+                                                <tr>
+
+                                                    <td><input type="submit" value="submit" onclick="return chkInvestigation(Model)" /></td>
+
+
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>*@
+
+    <div class="modal fade" id="EmbryoHeightModal" role="dialog">
+        <div class="modal-dialog" style="margin-left: 240px;margin-top:70px;">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <div>
+                        <span style="text-align:center;font-size:large;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Embryo Weeks And Weight</span>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+
+                <div class="modal-body" style="padding-left: 40px; background-image:url('../images/embryo.jpg');">
+
+                    <div>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <table class="table borderless" width="2%" style="text-align:center;border-color: green;">
+                                    <tr>
+                                        <td>
+                                            <table class="table-bordered">
+                                                <tr>
+                                                    <th style="background-color:green;text-align:center;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Weeks</th>
+                                                    <th style="background-color:green;text-align:center;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Weight</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>8--</td>
+                                                    <td>1.5g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>9--</td>
+                                                    <td>2g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>10--</td>
+                                                    <td>4g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>11--</td>
+                                                    <td>7g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>12--</td>
+                                                    <td>14g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>13--</td>
+                                                    <td>23g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>14--</td>
+                                                    <td>43g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>15--</td>
+                                                    <td>70g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>16--</td>
+                                                    <td>100g</td>
+
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <table class="table-bordered">
+                                                <tr>
+                                                    <th style="background-color:green;text-align:center;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Weeks</th>
+                                                    <th style="background-color:green;text-align:center;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Weight</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>17--</td>
+                                                    <td>140g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>18--</td>
+                                                    <td>190g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>19--</td>
+                                                    <td>240g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>20--</td>
+                                                    <td>300g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>21--</td>
+                                                    <td>360g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>22--</td>
+                                                    <td>430g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>23--</td>
+                                                    <td>501g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>24--</td>
+                                                    <td>600g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>25--</td>
+                                                    <td>660g</td>
+
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <table class="table-bordered">
+                                                <tr>
+                                                    <th style="background-color:green;text-align:center;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Weeks</th>
+                                                    <th style="background-color:green;text-align:center;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Weight</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>26--</td>
+                                                    <td>760g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>27--</td>
+                                                    <td>875g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>28--</td>
+                                                    <td>1005g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>29--</td>
+                                                    <td>1153g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>30--</td>
+                                                    <td>1319g</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>31--</td>
+                                                    <td>1502g</td>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td>32--</td>
+                                                    <td>1702g</td>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td>33--</td>
+                                                    <td>1918g</td>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td>34--</td>
+                                                    <td>2146g</td>
+
+                                                </tr>
+
+
+                                            </table>
+
+                                        </td>
+                                        <td>
+                                            <table class="table-bordered">
+                                                <tr>
+                                                    <th style="background-color:green;text-align:center;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Weeks</th>
+                                                    <th style="background-color:green;text-align:center;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Weight</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>35--</td>
+                                                    <td>2383g</td>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td>36--</td>
+                                                    <td>2622g</td>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td>37--</td>
+                                                    <td>2859g</td>
+
+                                                </tr>
+                                            </table>
+                                        </td>
+
+                                    </tr>
+
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div style="margin-left:70px; margin-right:50px; margin-top:10px;width: 70%">
+        <div class="row">
+            @*<div class="col-md-6" style="padding-left:30px;">
+                <img src="~/Image/medico-rx-registered.png" width="160" />
+
+                </div>*@
+            <div class="col-md-12">
+                <span>
+                    DARULSHIFA POLY CLINIC
+                </span><br>
+                <span class="addresslbl">
+                    <b>Lab and Medical Facility Available Here,</b>
+                </span><br>
+                <span class="addresslbl"><b>Hno:4-18-26/A,Opp. Noorani Masjid,</b></span><br>
+                <span class="addresslbl"><b>Hassan Nagar,Hyderabad.</b></span>
+                <hr />
+                @*<div class="container" style="padding-left:20px;padding-bottom:20px;">
+                        <div class="row">
+                            <div class="col-sm-3 pt ptlength" style="padding-left: 64px;"><label>PT ID:1211</label></div>
+                            <div class="col-sm-3 pt" style="padding-left:114px;"><label>Refer By </label></div>
+                            <div class="col-sm-4 pt" style="padding-left: 0px;"><input type="text" class="form-control inputFontsize" size="10" /></div>
+                            <div class="col-sm-2 pt" style="padding-left:40px;"><label>Date:@DateTime.Now.ToShortDateString() </label></div>
+                        </div>
+
+                    </div>*@
+            </div>
+        </div>
+
+
+        @using (Html.BeginForm("PatientReport", "Doctor", FormMethod.Post))
+        {
+        <div style="padding-left:100px;">
+            <table class="table" width="100%" style="border:none;">
+                <tr style="margin-top:40px;">
+
+                    <td Width="100" class="pt">
+                        <label>Pt Id:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="PId" name="PId" class="form-control inputFontsize" value="@Model.Pid" />
+                    </td>
+
+                    <td width="180" class="pt"><label>Refer By</label></td>
+                    <td><input type="text" id="ReferBy" name="ReferBy" class="form-control col-xs-2 inputFontsize" size="120" value="@Model.ReferBy" /> </td>
+
+                    <td class="pt">
+                        <label>Date</label>
+                    </td>
+
+                    <td class="pt">
+                        <label>@DateTime.Now.ToString("dd/MM/yyyy")</label>
+                    </td>
+                </tr>
+            </table>
+            <table class="table" width="100%" style="border:none;">
+                <tr style="margin-top:40px;">
+
+                    <td colspan="2" class="pt"><label>Pt Name:</label><input type="text"  id="PName" name="PName" class="form-control inputFontsize" size="120" value="@Model.PName" /> </td>
+
+                    <td class="pt"><label>Sex</label><input type="text" id="Gender" name="Gender" class="form-control col-xs-2 inputFontsize" value="@Model.Gender" /> </td>
+
+                    <td class="pt">
+                        <label>Age</label>
+                        <input type="text" id="Age" name="Age" size="15" class="form-control col-xs-2 inputFontsize" value="@Model.Age" />
+
+                    </td>
+
+                    <td class="pt">
+                        <label>Wt</label>
+                        <input type="text" id="WT" name="Wt" class="form-control col-xs-2 inputFontsize" size="18">
+                        <img src="~/images/height.png" class="icon" width="20" data-toggle="modal" data-target="#EmbryoHeightModal" />
+
+                    </td>
+
+
+                    <td class="pt">
+                        <label>Ht</label>
+                        <input id="HT" name="HT" type="text" class="form-control col-xs-2 inputFontsize" size="18" />
+                        <img src="~/images/height.png" class="icon" width="20" data-toggle="modal" data-target="#ChildrenHeightModal" />
+
+                    </td>
+
+                </tr>
+            </table>
+            <table style="padding-bottom:-7px;">
+                <tr>
+
+                    <td colspan="2" height="70" class="pt">
+                        <label>Complain</label>
+                        <textarea rows="6" id="jqxTextArea" cols="50" name="Complain" class="form-control textareasize " placeholder="Complain"></textarea>
+                    </td>
+
+                    <td colspan="10" height="70" class="pt">
+                        <label>History</label>
+                        <textarea rows="6" cols="90" id="jqxHistoryTextArea"  name="History" class="form-control textareasize " placeholder="Enter History"></textarea>
+                    </td>
+
+                </tr>
+            </table>
+            <table class="table" style="padding-bottom:-7px; border-collapse:collapse;">
+
+
+
+                <tr>
+                    <td class="pt" width="80px;">
+                        <label>RX</label>
+                    </td>
+                    <td class="pt" width="350px;">
+                        <label>Tablet</label>
+                    <td class="pt" width="250px;">
+                        <label>Dosses</label>
+                    </td>
+                    <td class="pt" width="370px;">
+                        <label>O/E:</label>
+                    </td>
+                </tr>
+
+            </table>
+            <table style="padding-bottom:90px;">
+                <tr>
+
+                    <td colspan="2" style="padding-top: 0px; padding-bottom: 75px;">
+
+
+                        <table style="margin-top:0px;border-collapse:collapse;">
+                            <tr>
+                                <td colspan="1">
+                                    <input type="text" class="form-control inputTextboxSizeSno inputFontsize" size="4" inputFontsize />
+                                </td>
+                                <td colspan="2">
+                                    <input type="text" id="txtSearchMedicines1" name="txtSearchMedicines1" size="42" class="form-control inputTextboxSizeMedicineBox inputFontsize autocomtext" />
+                                </td>
+
+                                <td colspan="4">
+                                    <select class="form-control inputTextboxSizeDoses inputFontsize autocomtext" width="363" style="-webkit-appearance: none;" name="Doses1">
+                                        <option value="-1"> </option>
+                                        <option value="q">q</option>
+                                        <option value="qd">qd</option>
+                                        <option value="qod">qod</option>
+                                        <option value="qh">qh</option>
+                                        <option value="S">S</option>
+                                        <option value="SS">SS</option>
+                                        <option value="C">C</option>
+                                        <option value="SOS">SOS</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="0-0 BID">0-0 BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span> BID"><span>&#189;</span>-<span>&#189;</span> BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID"><span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID</option>
+                                        <option value="TID">0-0-0 TID</option>
+                                        <option value="QID">QID</option>
+                                        <option value="0 OD">0 OD</option>
+                                        <option value="0 BT">0 BT</option>
+                                        <option value="hs">hs</option>
+                                        <option value="0-0 BBF">0-0 BBF</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>BD"><span>&#189;</span>-<span>&#189;</span> BD</option>
+                                        <option value="Tw">Tw</option>
+                                        <option value="SQ">SQ</option>
+                                        <option value="IM">IM</option>
+                                        <option value="ID">ID</option>
+                                        <option value="IV">IV</option>
+                                        <option value="QAM">QAM</option>
+                                        <option value="QPM">QPM</option>
+                                        <option value="Q4H">Q4H</option>
+                                        <option value="QOD">QOD</option>
+                                        <option value="HS">HS</option>
+                                        <option value="PRN">PRN</option>
+                                        <option value="PO">PO</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="Mg">Mg</option>
+                                        <option value="MCg/ug">MCg/ug</option>
+                                        <option value="G or GM">G or GM</option>
+                                        <option value="1TSF">1TSF(Tea Spoon)=5ml</option>
+                                        <option value="1TableSpoonfull(Tea Spoon)=15ml">1TableSpoonfull(Tea Spoon)=15ml</option>
+
+                                    </select>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="1">
+                                    <input type="text" class="form-control inputTextboxSizeSno inputFontsize" size="4" inputFontsize />
+                                </td>
+                                <td colspan="2">
+                                    <input type="text" id="txtSearchMedicines1" name="txtSearchMedicines1" size="42" class="form-control inputTextboxSizeMedicineBox inputFontsize autocomtext" />
+                                </td>
+
+                                <td colspan="6">
+                                    <select class="form-control inputTextboxSizeDoses inputFontsize autocomtext" width="363" style="-webkit-appearance: none;" name="Doses2">
+                                        <option value="-1"></option>
+                                        <option value="q">q</option>
+                                        <option value="qd">qd</option>
+                                        <option value="qod">qod</option>
+                                        <option value="qh">qh</option>
+                                        <option value="S">S</option>
+                                        <option value="SS">SS</option>
+                                        <option value="C">C</option>
+                                        <option value="SOS">SOS</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="0-0 BID">0-0 BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span> BID"><span>&#189;</span>-<span>&#189;</span> BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID"><span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID</option>
+                                        <option value="TID">0-0-0 TID</option>
+                                        <option value="QID">QID</option>
+                                        <option value="0 OD">0 OD</option>
+                                        <option value="0 BT">0 BT</option>
+                                        <option value="hs">hs</option>
+                                        <option value="0-0 BBF">0-0 BBF</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>BD"><span>&#189;</span>-<span>&#189;</span> BD</option>
+                                        <option value="Tw">Tw</option>
+                                        <option value="SQ">SQ</option>
+                                        <option value="IM">IM</option>
+                                        <option value="ID">ID</option>
+                                        <option value="IV">IV</option>
+                                        <option value="QAM">QAM</option>
+                                        <option value="QPM">QPM</option>
+                                        <option value="Q4H">Q4H</option>
+                                        <option value="QOD">QOD</option>
+                                        <option value="HS">HS</option>
+                                        <option value="PRN">PRN</option>
+                                        <option value="PO">PO</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="Mg">Mg</option>
+                                        <option value="MCg/ug">MCg/ug</option>
+                                        <option value="G or GM">G or GM</option>
+                                        <option value="1TSF">1TSF(Tea Spoon)=5ml</option>
+                                        <option value="1TableSpoonfull(Tea Spoon)=15ml">1TableSpoonfull(Tea Spoon)=15ml</option>
+
+                                    </select>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="1">
+                                    <input type="text" class="form-control inputTextboxSizeSno inputFontsize" size="4" inputFontsize />
+                                </td>
+                                <td colspan="2">
+                                    <input type="text" id="txtSearchMedicines2" name="txtSearchMedicines2" size="42" class="form-control inputTextboxSizeMedicineBox inputFontsize autocomtext" />
+                                </td>
+
+                                <td colspan="6">
+                                    <select class="form-control inputTextboxSizeDoses inputFontsize " width="363" style="-webkit-appearance: none;" name="Doses3">
+                                        <option value="-1"></option>
+                                        <option value="q">q</option>
+                                        <option value="qd">qd</option>
+                                        <option value="qod">qod</option>
+                                        <option value="qh">qh</option>
+                                        <option value="S">S</option>
+                                        <option value="SS">SS</option>
+                                        <option value="C">C</option>
+                                        <option value="SOS">SOS</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="0-0 BID">0-0 BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span> BID"><span>&#189;</span>-<span>&#189;</span> BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID"><span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID</option>
+                                        <option value="TID">0-0-0 TID</option>
+                                        <option value="QID">QID</option>
+                                        <option value="0 OD">0 OD</option>
+                                        <option value="0 BT">0 BT</option>
+                                        <option value="hs">hs</option>
+                                        <option value="0-0 BBF">0-0 BBF</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>BD"><span>&#189;</span>-<span>&#189;</span> BD</option>
+                                        <option value="Tw">Tw</option>
+                                        <option value="SQ">SQ</option>
+                                        <option value="IM">IM</option>
+                                        <option value="ID">ID</option>
+                                        <option value="IV">IV</option>
+                                        <option value="QAM">QAM</option>
+                                        <option value="QPM">QPM</option>
+                                        <option value="Q4H">Q4H</option>
+                                        <option value="QOD">QOD</option>
+                                        <option value="HS">HS</option>
+                                        <option value="PRN">PRN</option>
+                                        <option value="PO">PO</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="Mg">Mg</option>
+                                        <option value="MCg/ug">MCg/ug</option>
+                                        <option value="G or GM">G or GM</option>
+                                        <option value="1TSF">1TSF(Tea Spoon)=5ml</option>
+                                        <option value="1TableSpoonfull(Tea Spoon)=15ml">1TableSpoonfull(Tea Spoon)=15ml</option>
+
+                                    </select>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="1">
+                                    <input type="text" class="form-control inputTextboxSizeSno inputFontsize" size="4" inputFontsize />
+                                </td>
+                                <td colspan="2">
+                                    <input type="text" id="txtSearchMedicines" size="42" name="txtSearchMedicines3" class="form-control inputTextboxSizeMedicineBox inputFontsize autocomtext" />
+                                </td>
+
+                                <td colspan="6">
+                                    <select class="form-control inputTextboxSizeDoses inputFontsize " width="363" style="-webkit-appearance: none;" name="Doses4">
+                                        <option value="-1"></option>
+                                        <option value="q">q</option>
+                                        <option value="qd">qd</option>
+                                        <option value="qod">qod</option>
+                                        <option value="qh">qh</option>
+                                        <option value="S">S</option>
+                                        <option value="SS">SS</option>
+                                        <option value="C">C</option>
+                                        <option value="SOS">SOS</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="0-0 BID">0-0 BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span> BID"><span>&#189;</span>-<span>&#189;</span> BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID"><span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID</option>
+                                        <option value="TID">0-0-0 TID</option>
+                                        <option value="QID">QID</option>
+                                        <option value="0 OD">0 OD</option>
+                                        <option value="0 BT">0 BT</option>
+                                        <option value="hs">hs</option>
+                                        <option value="0-0 BBF">0-0 BBF</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>BD"><span>&#189;</span>-<span>&#189;</span> BD</option>
+                                        <option value="Tw">Tw</option>
+                                        <option value="SQ">SQ</option>
+                                        <option value="IM">IM</option>
+                                        <option value="ID">ID</option>
+                                        <option value="IV">IV</option>
+                                        <option value="QAM">QAM</option>
+                                        <option value="QPM">QPM</option>
+                                        <option value="Q4H">Q4H</option>
+                                        <option value="QOD">QOD</option>
+                                        <option value="HS">HS</option>
+                                        <option value="PRN">PRN</option>
+                                        <option value="PO">PO</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="Mg">Mg</option>
+                                        <option value="MCg/ug">MCg/ug</option>
+                                        <option value="G or GM">G or GM</option>
+                                        <option value="1TSF">1TSF(Tea Spoon)=5ml</option>
+                                        <option value="1TableSpoonfull(Tea Spoon)=15ml">1TableSpoonfull(Tea Spoon)=15ml</option>
+
+                                    </select>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="1">
+                                    <input type="text" class="form-control inputTextboxSizeSno inputFontsize" size="4" inputFontsize />
+                                </td>
+                                <td colspan="2">
+                                    <input type="text" id="txtSearchMedicines" name="txtSearchMedicines4" size="42" class="form-control inputTextboxSizeMedicineBox inputFontsize autocomtext"  />
+                                </td>
+
+                                <td colspan="6">
+                                    <select class="form-control inputTextboxSizeDoses inputFontsize " width="363" style="-webkit-appearance: none;" name="Doses5">
+                                        <option value="-1"></option>
+                                        <option value="q">q</option>
+                                        <option value="qd">qd</option>
+                                        <option value="qod">qod</option>
+                                        <option value="qh">qh</option>
+                                        <option value="S">S</option>
+                                        <option value="SS">SS</option>
+                                        <option value="C">C</option>
+                                        <option value="SOS">SOS</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="0-0 BID">0-0 BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span> BID"><span>&#189;</span>-<span>&#189;</span> BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID"><span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID</option>
+                                        <option value="TID">0-0-0 TID</option>
+                                        <option value="QID">QID</option>
+                                        <option value="0 OD">0 OD</option>
+                                        <option value="0 BT">0 BT</option>
+                                        <option value="hs">hs</option>
+                                        <option value="0-0 BBF">0-0 BBF</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>BD"><span>&#189;</span>-<span>&#189;</span> BD</option>
+                                        <option value="Tw">Tw</option>
+                                        <option value="SQ">SQ</option>
+                                        <option value="IM">IM</option>
+                                        <option value="ID">ID</option>
+                                        <option value="IV">IV</option>
+                                        <option value="QAM">QAM</option>
+                                        <option value="QPM">QPM</option>
+                                        <option value="Q4H">Q4H</option>
+                                        <option value="QOD">QOD</option>
+                                        <option value="HS">HS</option>
+                                        <option value="PRN">PRN</option>
+                                        <option value="PO">PO</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="Mg">Mg</option>
+                                        <option value="MCg/ug">MCg/ug</option>
+                                        <option value="G or GM">G or GM</option>
+                                        <option value="1TSF">1TSF(Tea Spoon)=5ml</option>
+                                        <option value="1TableSpoonfull(Tea Spoon)=15ml">1TableSpoonfull(Tea Spoon)=15ml</option>
+
+                                    </select>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="1">
+                                    <input type="text" class="form-control inputTextboxSizeSno inputFontsize" size="4" inputFontsize />
+                                </td>
+                                <td colspan="2">
+                                    <input type="text" id="txtSearchMedicines" name="txtSearchMedicines5" size="42" class="form-control inputTextboxSizeMedicineBox inputFontsize autocomtext" name="Doses5" />
+                                </td>
+
+                                <td colspan="6">
+                                    <select class="form-control inputTextboxSizeDoses inputFontsize " width="363" style="-webkit-appearance: none;" name="Doses6">
+                                        <option value="-1"></option>
+                                        <option value="q">q</option>
+                                        <option value="qd">qd</option>
+                                        <option value="qod">qod</option>
+                                        <option value="qh">qh</option>
+                                        <option value="S">S</option>
+                                        <option value="SS">SS</option>
+                                        <option value="C">C</option>
+                                        <option value="SOS">SOS</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="0-0 BID">0-0 BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span> BID"><span>&#189;</span>-<span>&#189;</span> BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID"><span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID</option>
+                                        <option value="TID">0-0-0 TID</option>
+                                        <option value="QID">QID</option>
+                                        <option value="0 OD">0 OD</option>
+                                        <option value="0 BT">0 BT</option>
+                                        <option value="hs">hs</option>
+                                        <option value="0-0 BBF">0-0 BBF</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>BD"><span>&#189;</span>-<span>&#189;</span> BD</option>
+                                        <option value="Tw">Tw</option>
+                                        <option value="SQ">SQ</option>
+                                        <option value="IM">IM</option>
+                                        <option value="ID">ID</option>
+                                        <option value="IV">IV</option>
+                                        <option value="QAM">QAM</option>
+                                        <option value="QPM">QPM</option>
+                                        <option value="Q4H">Q4H</option>
+                                        <option value="QOD">QOD</option>
+                                        <option value="HS">HS</option>
+                                        <option value="PRN">PRN</option>
+                                        <option value="PO">PO</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="Mg">Mg</option>
+                                        <option value="MCg/ug">MCg/ug</option>
+                                        <option value="G or GM">G or GM</option>
+                                        <option value="1TSF">1TSF(Tea Spoon)=5ml</option>
+                                        <option value="1TableSpoonfull(Tea Spoon)=15ml">1TableSpoonfull(Tea Spoon)=15ml</option>
+
+                                    </select>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="1">
+                                    <input type="text" class="form-control inputTextboxSizeSno inputFontsize" size="4" inputFontsize />
+                                </td>
+                                <td colspan="2">
+                                    <input type="text" id="txtSearchMedicines" name="txtSearchMedicines6" size="42" class="form-control inputTextboxSizeMedicineBox inputFontsize autocomtext" />
+                                </td>
+
+                                <td colspan="6">
+                                    <select class="form-control inputTextboxSizeDoses inputFontsize " width="363" style="-webkit-appearance: none;" name="Doses7">
+                                        <option value="-1"></option>
+                                        <option value="q">q</option>
+                                        <option value="qd">qd</option>
+                                        <option value="qod">qod</option>
+                                        <option value="qh">qh</option>
+                                        <option value="S">S</option>
+                                        <option value="SS">SS</option>
+                                        <option value="C">C</option>
+                                        <option value="SOS">SOS</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="0-0 BID">0-0 BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span> BID"><span>&#189;</span>-<span>&#189;</span> BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID"><span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID</option>
+                                        <option value="TID">0-0-0 TID</option>
+                                        <option value="QID">QID</option>
+                                        <option value="0 OD">0 OD</option>
+                                        <option value="0 BT">0 BT</option>
+                                        <option value="hs">hs</option>
+                                        <option value="0-0 BBF">0-0 BBF</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>BD"><span>&#189;</span>-<span>&#189;</span> BD</option>
+                                        <option value="Tw">Tw</option>
+                                        <option value="SQ">SQ</option>
+                                        <option value="IM">IM</option>
+                                        <option value="ID">ID</option>
+                                        <option value="IV">IV</option>
+                                        <option value="QAM">QAM</option>
+                                        <option value="QPM">QPM</option>
+                                        <option value="Q4H">Q4H</option>
+                                        <option value="QOD">QOD</option>
+                                        <option value="HS">HS</option>
+                                        <option value="PRN">PRN</option>
+                                        <option value="PO">PO</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="Mg">Mg</option>
+                                        <option value="MCg/ug">MCg/ug</option>
+                                        <option value="G or GM">G or GM</option>
+                                        <option value="1TSF">1TSF(Tea Spoon)=5ml</option>
+                                        <option value="1TableSpoonfull(Tea Spoon)=15ml">1TableSpoonfull(Tea Spoon)=15ml</option>
+
+                                    </select>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="1">
+                                    <input type="text" class="form-control inputTextboxSizeSno inputFontsize" size="4" inputFontsize />
+                                </td>
+                                <td colspan="2">
+                                    <input type="text" id="txtSearchMedicines" name="txtSearchMedicines7"  size="42" class="form-control inputTextboxSizeMedicineBox inputFontsize autocomtext"  />
+                                </td>
+
+                                <td colspan="6">
+                                    <select class="form-control inputTextboxSizeDoses inputFontsize " width="363" style="-webkit-appearance: none;" name="Doses8">
+                                        <option value="-1"></option>
+                                        <option value="q">q</option>
+                                        <option value="qd">qd</option>
+                                        <option value="qod">qod</option>
+                                        <option value="qh">qh</option>
+                                        <option value="S">S</option>
+                                        <option value="SS">SS</option>
+                                        <option value="C">C</option>
+                                        <option value="SOS">SOS</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="0-0 BID">0-0 BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span> BID"><span>&#189;</span>-<span>&#189;</span> BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID"><span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID</option>
+                                        <option value="TID">0-0-0 TID</option>
+                                        <option value="QID">QID</option>
+                                        <option value="0 OD">0 OD</option>
+                                        <option value="0 BT">0 BT</option>
+                                        <option value="hs">hs</option>
+                                        <option value="0-0 BBF">0-0 BBF</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>BD"><span>&#189;</span>-<span>&#189;</span> BD</option>
+                                        <option value="Tw">Tw</option>
+                                        <option value="SQ">SQ</option>
+                                        <option value="IM">IM</option>
+                                        <option value="ID">ID</option>
+                                        <option value="IV">IV</option>
+                                        <option value="QAM">QAM</option>
+                                        <option value="QPM">QPM</option>
+                                        <option value="Q4H">Q4H</option>
+                                        <option value="QOD">QOD</option>
+                                        <option value="HS">HS</option>
+                                        <option value="PRN">PRN</option>
+                                        <option value="PO">PO</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="Mg">Mg</option>
+                                        <option value="MCg/ug">MCg/ug</option>
+                                        <option value="G or GM">G or GM</option>
+                                        <option value="1TSF">1TSF(Tea Spoon)=5ml</option>
+                                        <option value="1TableSpoonfull(Tea Spoon)=15ml">1TableSpoonfull(Tea Spoon)=15ml</option>
+
+                                    </select>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="1">
+                                    <input type="text" class="form-control inputTextboxSizeSno inputFontsize" size="4" inputFontsize />
+                                </td>
+                                <td colspan="2">
+                                    <input type="text" id="txtSearchMedicines" name="txtSearchMedicines8"  size="42" class="form-control inputTextboxSizeMedicineBox inputFontsize autocomtext" />
+                                </td>
+
+                                <td colspan="6">
+                                    <select class="form-control inputTextboxSizeDoses inputFontsize " width="363" style="-webkit-appearance: none;" name="Doses9">
+                                        <option value="-1"></option>
+                                        <option value="q">q</option>
+                                        <option value="qd">qd</option>
+                                        <option value="qod">qod</option>
+                                        <option value="qh">qh</option>
+                                        <option value="S">S</option>
+                                        <option value="SS">SS</option>
+                                        <option value="C">C</option>
+                                        <option value="SOS">SOS</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="0-0 BID">0-0 BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span> BID"><span>&#189;</span>-<span>&#189;</span> BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID"><span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID</option>
+                                        <option value="TID">0-0-0 TID</option>
+                                        <option value="QID">QID</option>
+                                        <option value="0 OD">0 OD</option>
+                                        <option value="0 BT">0 BT</option>
+                                        <option value="hs">hs</option>
+                                        <option value="0-0 BBF">0-0 BBF</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>BD"><span>&#189;</span>-<span>&#189;</span> BD</option>
+                                        <option value="Tw">Tw</option>
+                                        <option value="SQ">SQ</option>
+                                        <option value="IM">IM</option>
+                                        <option value="ID">ID</option>
+                                        <option value="IV">IV</option>
+                                        <option value="QAM">QAM</option>
+                                        <option value="QPM">QPM</option>
+                                        <option value="Q4H">Q4H</option>
+                                        <option value="QOD">QOD</option>
+                                        <option value="HS">HS</option>
+                                        <option value="PRN">PRN</option>
+                                        <option value="PO">PO</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="Mg">Mg</option>
+                                        <option value="MCg/ug">MCg/ug</option>
+                                        <option value="G or GM">G or GM</option>
+                                        <option value="1TSF">1TSF(Tea Spoon)=5ml</option>
+                                        <option value="1TableSpoonfull(Tea Spoon)=15ml">1TableSpoonfull(Tea Spoon)=15ml</option>
+
+                                    </select>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="1">
+                                    <input type="text" class="form-control inputTextboxSizeSno inputFontsize" size="4" inputFontsize />
+                                </td>
+                                <td colspan="2">
+                                    <input type="text" id="txtSearchMedicines" name="txtSearchMedicines9"  size="42" class="form-control inputTextboxSizeMedicineBox inputFontsize autocomtext" />
+                                </td>
+
+                                <td colspan="6">
+                                    <select class="form-control inputTextboxSizeDoses inputFontsize " width="363" style="-webkit-appearance: none;" name="Doses10">
+                                        <option value="-1"></option>
+                                        <option value="q">q</option>
+                                        <option value="qd">qd</option>
+                                        <option value="qod">qod</option>
+                                        <option value="qh">qh</option>
+                                        <option value="S">S</option>
+                                        <option value="SS">SS</option>
+                                        <option value="C">C</option>
+                                        <option value="SOS">SOS</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="0-0 BID">0-0 BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span> BID"><span>&#189;</span>-<span>&#189;</span> BID</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID"><span>&#189;</span>-<span>&#189;</span>-<span>&#189;</span> TID</option>
+                                        <option value="TID">0-0-0 TID</option>
+                                        <option value="QID">QID</option>
+                                        <option value="0 OD">0 OD</option>
+                                        <option value="0 BT">0 BT</option>
+                                        <option value="hs">hs</option>
+                                        <option value="0-0 BBF">0-0 BBF</option>
+                                        <option value="<span>&#189;</span>-<span>&#189;</span>BD"><span>&#189;</span>-<span>&#189;</span> BD</option>
+                                        <option value="Tw">Tw</option>
+                                        <option value="SQ">SQ</option>
+                                        <option value="IM">IM</option>
+                                        <option value="ID">ID</option>
+                                        <option value="IV">IV</option>
+                                        <option value="QAM">QAM</option>
+                                        <option value="QPM">QPM</option>
+                                        <option value="Q4H">Q4H</option>
+                                        <option value="QOD">QOD</option>
+                                        <option value="HS">HS</option>
+                                        <option value="PRN">PRN</option>
+                                        <option value="PO">PO</option>
+                                        <option value="AC">AC</option>
+                                        <option value="PC">PC</option>
+                                        <option value="Mg">Mg</option>
+                                        <option value="MCg/ug">MCg/ug</option>
+                                        <option value="G or GM">G or GM</option>
+                                        <option value="1TSF">1TSF(Tea Spoon)=5ml</option>
+                                        <option value="1TableSpoonfull(Tea Spoon)=15ml">1TableSpoonfull(Tea Spoon)=15ml</option>
+
+                                    </select>
+                                </td>
+
+                            </tr>
+
+
+                        </table>
+                    </td>
+                    <td colspan="8" style="padding-top: 0px; padding-bottom:0px;">
+                        <table style="border-collapse:collapse;">
+                            <tr>
+                                <td>
+                                    @*<textarea rows="6" cols="60" class="form-control textareasize"></textarea>*@
+                                    <table height="6" width="20">
+                                        <tr>
+                                            <td class="pt">
+                                                <label>G.C</label>
+                                            </td>
+                                            <td><input type="text" size="8" value="Fair" class="inputFontsize" id="GCs" name="GCs" /></td>
+                                            <td class="pt"><label>SPO2</label></td>
+                                            <td><input type="text" size="2" value="99" class="inputFontsize" id="SPO2" name="SPO2"/></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="pt">
+                                                <label>Temp</label>
+                                            </td>
+                                            <td><input type="text" size="8" value="99F" class="inputFontsize" id="Temp" name="Temp" /></td>
+                                            <td class="pt"><label>P/A</label></td>
+                                            <td><input type="text" size="2" value="Soft" class="inputFontsize" id="PA" name="PA" /></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="pt">
+                                                <label>P/R</label>
+                                            </td>
+                                            <td><input type="text" size="8" value="72" class="inputFontsize" id="PR" name="PR" /></td>
+                                            <td class="pt"><label>CNS</label></td>
+                                            <td><input type="text" size="2" value="NAD" class="inputFontsize" id="CNS" name="CNS" /></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="pt">
+                                                <label>BP</label>
+                                            </td>
+                                            <td><input type="text" size="8" value="120/90mmhg" class="inputFontsize" id="BP" name="BP" /></td>
+                                            <td class="pt"><label>GRBS</label></td>
+                                            <td><input type="text" size="2" value="120" class="inputFontsize" id="GRBS" name="GRBS" /></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="pt">
+                                                <label> L/R </label>
+                                            </td>
+                                            <td><input type="text" size="8" value="NAD" class="inputFontsize"  id="LR" name="LR"/></td>
+                                            <td class="pt"><label>H/R</label></td>
+                                            <td><input type="text" size="2" value="S1S2" class="inputFontsize" id="HR" name="HR" /></td>
+
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td class="pt"><label>DX:</label><textarea id="jqxDXTextArea"   name="DX" rows="3" cols="60" class="form-control textareasize"></textarea></td>
+                            </tr>
+                            <tr>
+
+                                <td class="pt">
+                                    <label>Investigation:</label>
+                                    <img src="~/images/height.png" class="icon" width="20" data-toggle="modal" data-target="#DiagnosisTestModal" />
+                                    <textarea rows="5" cols="60" id="jqxInvestigationTextArea" name="Investigation" class="form-control textareasize"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                            <tr>
+
+                                <td class="pt"><label>Advice:</label><textarea rows="5" id="Advice" name="Advice" cols="60" class="form-control textareasize"></textarea></td>
+                            </tr>
+                            
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                        <td class="pt" width="153px">Refer Any Emergency</td>
+                        <td colspan="6" style="text-align:left;"><input type="text" size="110" placeholder="Refer Any Emergency" class="form-control" id="Emergency" name="Emergency" /></td>
+                        <td colspan="4" class="pt"><input type="text" placeholder="REVEIW" class="form-control" size="28"  id="Reveiw" name="Reveiw"/></td>
+                    </tr>
+            </table>
+            <div style="text-align:center;font-family:'Times New Roman';font-weight:700;padding-bottom:20px;" ;>
+                <h4 class="Rfsw pt">If You want to Buy Any Type of Software Please Contact:9392447742 / 9032704090</h4>
+            </div>
+            <div style="text-align:center;margin-top:120px ;margin-bottom:40px;">
+
+                <input type="submit" class="btn btn-warning" value="Save" />
+                <button onclick="window.print()" class="btn btn-success">Print</button>
+                <div style="text-align:left;">
+                    @if (Convert.ToInt32(Session["RoleId"])==1) {
+
+                    <a href="~/Appointment/ViewAppointment" class="btn btn-primary">Back To Appointment</a>
+                    }
+                    else if(Convert.ToInt32(Session["RoleId"]) == 2)
+                    {
+                    <a href="~/DashBoard/DoctorDashBoard" class="btn btn-primary">Back To Appointment</a>
+                    }
+                </div>
+            </div>
+            
+        </div>
+        }
+    </div>
+
+
+    <script>
+
+        function chkInvestigation(Model) {
+            $.ajax({
+                type: "post",
+                url: "Doctor/PatientReport",
+                data: Model,
+                success: function (html) {
+                    $('#msg').html(html);
+                }
+            });
+            return false;
+        }
+
+        $(document).ready(function () {
+            var GetDissease = [];
+            var GetInvestigation = [];
+            $.get("GetAllDiseasses", function (data, status) {
+
+                GetDissease = data;
+            });
+
+            $.get("GetInvestigation", function (data1, status) {
+
+                GetInvestigation = data1;
+            });
+
+            $('#jqxTextArea').jqxTextArea({
+                height: 130, width: 460, theme: 'summer',
+                source: function (query, response) {
+                    var item = query.split(/ \s*/).pop();
+                    // update the search query.
+                    $('#jqxTextArea').jqxTextArea({ query: item });
+                    response(GetDissease);
+                },
+                renderer: function (itemValue, inputValue) {
+                    var terms = inputValue.split(/ \s*/);
+                    // remove the current input
+                    terms.pop();
+                    // add the selected item
+                    terms.push(itemValue);
+                    // add placeholder to get the comma-and-space at the end
+                    terms.push("");
+                    var value = terms.join(" ");
+                 
+                    return value;
+                }
+            });
+
+            $('#jqxHistoryTextArea').jqxTextArea({
+                height: 130, width: 460,theme: 'summer',
+                source: function (query, response) {
+                    var item = query.split(/ \s*/).pop();
+                    // update the search query.
+                    $('#jqxHistoryTextArea').jqxTextArea({ query: item });
+                    response(GetDissease);
+                },
+                renderer: function (itemValue, inputValue) {
+                    var terms = inputValue.split(/ \s*/);
+                    // remove the current input
+                    terms.pop();
+                    // add the selected item
+                    terms.push(itemValue);
+                    // add placeholder to get the comma-and-space at the end
+                    terms.push("");
+                    var value = terms.join(" ");
+                    return value;
+                }
+            });
+
+            $('#jqxDXTextArea').jqxTextArea({
+                height: 74, width: 344,theme: 'summer',
+                source: function (query, response) {
+                    var item = query.split(/ \s*/).pop();
+                    // update the search query.
+                    $('#jqxDXTextArea').jqxTextArea({ query: item });
+                    response(GetDissease);
+                },
+                renderer: function (itemValue, inputValue) {
+                    var terms = inputValue.split(/ \s*/);
+                    // remove the current input
+                    terms.pop();
+                    // add the selected item
+                    terms.push(itemValue);
+                    // add placeholder to get the comma-and-space at the end
+                    terms.push("");
+                    var value = terms.join(" ");
+                    return value;
+                }
+            });
+
+            $('#jqxInvestigationTextArea').jqxTextArea({
+                height: 74, width: 344, theme: 'summer',
+                source: function (query, response) {
+                    var item = query.split(/ \s*/).pop();
+                    // update the search query.
+                    $('#jqxInvestigationTextArea').jqxTextArea({ query: item });
+                    response(GetInvestigation);
+                },
+                renderer: function (itemValue, inputValue) {
+                    var terms = inputValue.split(/ \s*/);
+                    // remove the current input
+                    terms.pop();
+                    // add the selected item
+                    terms.push(itemValue);
+                    // add placeholder to get the comma-and-space at the end
+                    terms.push("");
+                    var value = terms.join(" ");
+                    return value;
+                }
+            });
+
+        });
+    </script>
+
+
+
+</body>
+</html>
